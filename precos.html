@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tabela de preços dos produtos da YHAWEH EMPREEDIMENTO,LDA: bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, e camisas.">
-    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, camisas, YHAWEH EMPREEDIMENTO,LDA">
+    <meta name="description" content="Tabela de preços e lista completa de produtos e serviços da YHAWEH EMPREEDIMENTO,LDA: bordados, personalização, brindes, restauração de interiores.">
+    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, camisas, bordados, personalização, louças, talheres, brindes, eventos, restauração de interiores, forro de cadeira, forro de sofá, YHAWEH EMPREEDIMENTO,LDA">
     <meta name="author" content="YHAWEH EMPREEDIMENTO,LDA">
 
-    <title>Tabela de Preços - YHAWEH EMPREEDIMENTO,LDA</title>
+    <title>Preços e Serviços - YHAWEH EMPREEDIMENTO,LDA</title>
 
     <!-- Fontes (certifique-se de que estes links estejam no seu index.html também para consistência) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -297,6 +297,83 @@
             margin-bottom: 10px;
         }
 
+        /* --- Nova Seção de Serviços e Outros Produtos --- */
+        .services-section {
+            background-color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 40px; /* Espaçamento do conteúdo acima */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .services-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .service-item {
+            background-color: var(--bg-lighter); /* Fundo claro para itens de serviço */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .service-item h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-item h3 i {
+            color: var(--secondary-color); /* Ícone em laranja vibrante */
+            font-size: 1.8rem;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .service-item ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            color: var(--text-medium);
+        }
+
+        .service-item ul li {
+            margin-bottom: 8px;
+        }
+
+        .service-item .example-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+        }
+
         /* --- Footer (ajustado para novas cores) --- */
         footer {
             background-color: var(--primary-color);
@@ -368,6 +445,18 @@
             .price-modal-name { font-size: 1.6rem; }
             .price-modal-description { font-size: 1rem; }
             .price-modal-image-container { height: 200px; }
+
+            /* Nova Seção de Serviços no Mobile */
+            .services-section { padding: 40px 15px; margin-top: 30px; }
+            .services-section h2 { font-size: 2rem; margin-bottom: 30px; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .service-item { padding: 20px; }
+            .service-item h3 { font-size: 1.4rem; }
+            .service-item h3 i { font-size: 1.6rem; }
+            .service-item p { font-size: 0.95rem; }
+            .service-item ul { padding-left: 20px; }
+            .service-item ul li { margin-bottom: 5px; }
+            .service-item .example-image { max-height: 150px; }
         }
 
         /* Telas Extremamente Pequenas (celulares muito pequenos) */
@@ -383,6 +472,12 @@
             .price-modal-image-container { height: 150px; }
             .price-modal-name { font-size: 1.4rem; }
             .price-modal-description { font-size: 0.9rem; }
+
+            .services-section h2 { font-size: 1.8rem; }
+            .service-item h3 { font-size: 1.2rem; }
+            .service-item h3 i { font-size: 1.4rem; }
+            .service-item p { font-size: 0.9rem; }
+            .service-item .example-image { max-height: 120px; }
         }
     </style>
 </head>
@@ -424,7 +519,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Diversos modelos e tamanhos para decoração.</td>
-                        <td data-label="Preço Unitário">27.000,00</td>
+                        <td data-label="Preço Unitário">35.000,00</td>
                     </tr>
                     <tr data-product-id="toalhas-diversas">
                         <td data-label="Produto">
@@ -434,7 +529,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Toalhas de banho, rosto e lavabo em algodão.</td>
-                        <td data-label="Preço Unitário">38.400,00</td>
+                        <td data-label="Preço Unitário">12.000,00</td>
                     </tr>
                     <tr data-product-id="cortinas">
                         <td data-label="Produto">
@@ -444,7 +539,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Vários tecidos, cores e tamanhos para ambientes.</td>
-                        <td data-label="Preço Unitário">Depende das Medidas</td>
+                        <td data-label="Preço Unitário">28.000,00</td>
                     </tr>
                     <tr data-product-id="fatos-safari">
                         <td data-label="Produto">
@@ -454,7 +549,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Conforto e estilo para atividades ao ar livre.</td>
-                        <td data-label="Preço Unitário">130.000,00</td>
+                        <td data-label="Preço Unitário">65.000,00</td>
                     </tr>
                     <tr data-product-id="fatos-sociais">
                         <td data-label="Produto">
@@ -464,7 +559,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Elegância e sofisticação para eventos formais.</td>
-                        <td data-label="Preço Unitário">184.500,00</td>
+                        <td data-label="Preço Unitário">95.000,00</td>
                     </tr>
                     <tr data-product-id="camisas">
                         <td data-label="Produto">
@@ -474,12 +569,69 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Variedade de modelos para casual e formal.</td>
-                        <td data-label="Preço Unitário">em análise...</td>
+                        <td data-label="Preço Unitário">22.000,00</td>
                     </tr>
                     <!-- Adicione mais produtos aqui, se necessário -->
                 </tbody>
             </table>
             <p class="disclaimer">Os preços são indicativos e podem variar. Para valores exatos e encomendas personalizadas, por favor, entre em contato.</p>
+        </section>
+
+        <!-- Nova Seção de Serviços e Outros Produtos -->
+        <section id="services-and-more" class="services-section visible">
+            <h2>Nossos Serviços e Outros Produtos</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3><i class="fas fa-cut"></i> Bordados Personalizados</h3>
+                    <p>Transformamos qualquer peça de tecido em uma obra de arte exclusiva. Realizamos bordados de alta qualidade em:</p>
+                    <ul>
+                        <li><strong>Uniformes:</strong> Logos de empresas, escolas, equipas desportivas.</li>
+                        <li><strong>Vestuário:</strong> Camisas, polos, casacos, bonés, fatos de treino.</li>
+                        <li><strong>Artigos de Casa:</strong> Toalhas, lençóis, guardanapos, roupões.</li>
+                        <li><strong>Brindes Têxteis:</strong> Sacolas, mochilas, porta-chaves de tecido.</li>
+                    </ul>
+                    <p><strong>Tamanho do Serviço:</strong> Desde pequenas quantidades para uso pessoal até grandes volumes para empresas e eventos.</p>
+                    <img src="images/servicos/bordado_exemplo.jpg" alt="Exemplo de Bordado em Tecido" class="example-image">
+                </div>
+
+                <div class="service-item">
+                    <h3><i class="fas fa-utensils"></i> Personalização de Louças e Talheres</h3>
+                    <p>Dê um toque único aos seus utensílios de mesa com a nossa personalização. Ideal para:</p>
+                    <ul>
+                        <li><strong>Restaurantes e Hotéis:</strong> Branding em louças e talheres.</li>
+                        <li><strong>Eventos Especiais:</strong> Casamentos, aniversários, batizados.</li>
+                        <li><strong>Brindes Corporativos:</strong> Louças e talheres com logo da empresa.</li>
+                        <li><strong>Uso Pessoal:</strong> Conjuntos com iniciais ou designs exclusivos.</li>
+                    </ul>
+                    <p><strong>Tamanho do Serviço:</strong> Personalização individual ou em grandes lotes, com gravação a laser ou técnicas de pintura especializadas.</p>
+                    <img src="images/servicos/louca_exemplo.jpg" alt="Exemplo de Louça Personalizada" class="example-image">
+                </div>
+
+                <div class="service-item">
+                    <h3><i class="fas fa-gift"></i> Brindes para Eventos e Ocasiões</h3>
+                    <p>Criamos brindes memoráveis e de alta qualidade para qualquer evento ou ocasião formal, como encontros corporativos, conferências, feiras ou celebrações especiais. Oferecemos:</p>
+                    <ul>
+                        <li><strong>Artigos Personalizados:</strong> Canetas, cadernos, garrafas, power banks.</li>
+                        <li><strong>Kits Exclusivos:</strong> Combinando diversos itens personalizados.</li>
+                        <li><strong>Embalagens Temáticas:</strong> Para valorizar ainda mais o brinde.</li>
+                    </ul>
+                    <p><strong>Tamanho do Serviço:</strong> Desde pequenas tiragens para eventos íntimos até milhares de unidades para grandes conferências.</p>
+                    <img src="images/servicos/brinde_exemplo.jpg" alt="Exemplo de Brinde Personalizado" class="example-image">
+                </div>
+
+                <div class="service-item">
+                    <h3><i class="fas fa-couch"></i> Restauração e Acabamento de Interiores</h3>
+                    <p>Dê uma nova vida ao seu espaço com os nossos serviços de restauração e acabamento, garantindo um toque de classe e sofisticação:</p>
+                    <ul>
+                        <li><strong>Cortinas Personalizadas:</strong> Confeção e instalação de cortinas sob medida, com tecidos e designs exclusivos.</li>
+                        <li><strong>Forro de Cadeiras e Sofás:</strong> Renovação de estofos, troca de tecidos e enchimentos para móveis antigos ou desgastados.</li>
+                        <li><strong>Almofadas Decorativas:</strong> Criação de almofadas personalizadas que complementam a sua decoração.</li>
+                        <li><strong>Pequenos Retoques:</strong> Ajustes e reparos em elementos têxteis do seu espaço.</li>
+                    </ul>
+                    <p><strong>Tamanho do Serviço:</strong> Projetos para residências, escritórios, hotéis e espaços comerciais, adaptados à sua necessidade.</p>
+                    <img src="images/servicos/restauracao_exemplo.jpg" alt="Exemplo de Restauração de Sofá" class="example-image">
+                </div>
+            </div>
         </section>
     </main>
 
@@ -621,8 +773,8 @@
                 });
             });
 
-            // --- Animação de seção ao scroll (para a seção de preços) ---
-            const priceSection = document.getElementById('price-list');
+            // --- Animação de seção ao scroll (para a seção de preços e serviços) ---
+            const sections = document.querySelectorAll('section'); // Seleciona todas as seções
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -638,7 +790,9 @@
                 });
             }, observerOptions);
 
-            sectionObserver.observe(priceSection);
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
         });
     </script>
 </body>
