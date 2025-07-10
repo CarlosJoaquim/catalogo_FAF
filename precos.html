@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tabela de preços dos produtos da FAF Comércio: bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, toalhas bordadas e camisas.">
+    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, toalhas bordadas, camisas, FAF Comércio">
+    <meta name="author" content="FAF Comércio">
+
+    <title>Tabela de Preços - FAF Comércio</title>
+
+    <!-- Fontes (certifique-se de que estas links estejam no seu index.html também para consistência) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seu arquivo CSS principal para manter o estilo -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para a página de preços (pode ser movido para style.css se preferir) */
+        .price-list-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price-list-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #004D00; /* Cor verde do seu tema */
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden; /* Garante que bordas arredondadas funcionem na tabela */
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .price-table th {
+            background-color: #004D00; /* Cor verde do seu tema */
+            color: #FFD700; /* Cor dourada do seu tema */
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .price-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .price-table td:last-child {
+            font-weight: bold;
+            color: #004D00; /* Cor verde do seu tema */
+            font-size: 1.1rem;
+            text-align: right;
+        }
+
+        .price-image {
+            width: 80px; /* Tamanho da imagem na tabela */
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            vertical-align: middle; /* Alinha a imagem no meio da célula */
+            margin-right: 15px;
+            border: 1px solid #eee; /* Borda sutil para a imagem */
+        }
+
+        .product-name-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        /* Responsividade para a tabela de preços */
+        @media (max-width: 768px) {
+            .price-list-section {
+                padding: 50px 15px;
+            }
+
+            .price-list-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .price-table, .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr {
+                display: block; /* Transforma a tabela em blocos */
+            }
+
+            .price-table thead tr {
+                position: absolute;
+                top: -9999px; /* Esconde o cabeçalho original */
+                left: -9999px;
+            }
+
+            .price-table tr {
+                border: 1px solid #ccc;
+                margin-bottom: 15px;
+                border-radius: 8px;
+            }
+
+            .price-table td {
+                border: none;
+                position: relative;
+                padding-left: 50%; /* Espaço para o pseudo-elemento */
+                text-align: right;
+            }
+
+            .price-table td:before {
+                content: attr(data-label); /* Usa o atributo data-label como "cabeçalho" */
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: #004D00; /* Cor verde do seu tema */
+            }
+
+            .price-table td:last-child {
+                text-align: right;
+            }
+
+            .price-image {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">YHAWEH EMPREEDIMENTO,LDA</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="precos.html">Preços</a></li> <!-- Link para esta nova página -->
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="price-list" class="price-list-section visible">
+            <h2>Nossa Tabela de Preços</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Descrição Breve</th>
+                        <th>Preço Unitário (AOA)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/bases_mesa/base_mesa01.jpg" alt="Base de Mesa Decorativa" class="price-image">
+                                Bases de Mesa
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Diversos modelos e tamanhos para decoração.</td>
+                        <td data-label="Preço Unitário">35.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/toalha/toalha03.png" alt="Toalha de Banho" class="price-image">
+                                Toalhas (Diversas)
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Toalhas de banho, rosto e lavabo em algodão.</td>
+                        <td data-label="Preço Unitário">12.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/cortinas/cortina01.jpg" alt="Cortina Moderna" class="price-image">
+                                Cortinas
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Vários tecidos, cores e tamanhos para ambientes.</td>
+                        <td data-label="Preço Unitário">28.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/fato_safari/safari01.jpg" alt="Fato Safari Masculino" class="price-image">
+                                Fatos Safari
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Conforto e estilo para atividades ao ar livre.</td>
+                        <td data-label="Preço Unitário">65.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/fato/Fato.png" alt="Fato Social Elegante" class="price-image">
+                                Fatos Sociais
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Elegância e sofisticação para eventos formais.</td>
+                        <td data-label="Preço Unitário">95.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/toalha_bordada/bordada01.jpg" alt="Toalha Bordada Personalizada" class="price-image">
+                                Toalhas com Bordado
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Toalhas personalizadas com bordados exclusivos.</td>
+                        <td data-label="Preço Unitário">18.000,00</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Produto">
+                            <div class="product-name-cell">
+                                <img src="images/camisola/camisa01.png" alt="Camisa Casual" class="price-image">
+                                Camisas
+                            </div>
+                        </td>
+                        <td data-label="Descrição Breve">Variedade de modelos para casual e formal.</td>
+                        <td data-label="Preço Unitário">22.000,00</td>
+                    </tr>
+                    <!-- Adicione mais produtos aqui, se necessário -->
+                </tbody>
+            </table>
+            <p class="disclaimer">Os preços são indicativos e podem variar. Para valores exatos e encomendas personalizadas, por favor, entre em contato.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 YHAWEH EMPREEDIMENTO,LDA. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script JS para o menu hambúrguer e animação de seção nesta página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica do Menu Hambúrguer (copiada do script.js para garantir que funcione nesta página)
+            const navBurger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const navIndividualLinks = document.querySelectorAll('.nav-links li');
+
+            navBurger.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+                navIndividualLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+                navBurger.classList.toggle('toggle');
+            });
+
+            // Fechar menu hambúrguer ao clicar em um link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('nav-active')) {
+                        navLinks.classList.remove('nav-active');
+                        navBurger.classList.remove('toggle');
+                        navIndividualLinks.forEach(item => item.style.animation = '');
+                    }
+                });
+            });
+
+            // Animação de seção ao scroll (para a seção de preços)
+            const priceSection = document.getElementById('price-list');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sectionObserver.observe(priceSection);
+        });
+    </script>
+</body>
+</html>
