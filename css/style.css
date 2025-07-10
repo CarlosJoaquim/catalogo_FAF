@@ -1,0 +1,727 @@
+/* Variáveis de Cores Atualizadas para Minimalista e Clássico */
+:root {
+    --primary-dark: #0A0A0A; /* Preto Profundo para fundo principal */
+    --secondary-black: #1A1A1A; /* Preto secundário para cards/elementos */
+    --accent-gold: #D4AF37; /* Dourado Clássico e Sóbrio */
+    --text-light: #F0F0F0; /* Branco Suave para texto principal */
+    --text-dark: #333333; /* Cinza Escuro para uso em fundos claros (se houver) */
+    --border-subtle: rgba(212, 175, 55, 0.1); /* Borda dourada sutil e discreta */
+    --shadow-color: rgba(0, 0, 0, 0.7); /* Sombra mais densa */
+}
+
+/* Fontes (garanta que estejam linkadas no HTML) */
+/* Recomendo adicionar:
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+*/
+body {
+    font-family: 'Roboto', sans-serif; /* Fonte limpa e profissional */
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.7; /* Espaçamento de linha confortável */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Animação de Fundo Sutil (Minimalista) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+    z-index: -1;
+    animation: backgroundPulse 18s infinite alternate; /* Animação mais suave */
+}
+
+@keyframes backgroundPulse {
+    0% { background-size: 130% 130%; opacity: 0.9; }
+    100% { background-size: 100% 100%; opacity: 1; }
+}
+
+/* Títulos e Elementos de Destaque */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Fonte serifada para elegância */
+    color: var(--accent-gold);
+    margin-bottom: 25px; /* Margem ligeiramente maior para respiro */
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px var(--shadow-color); /* Sombra discreta */
+}
+
+h2 {
+    font-size: 3rem; /* Título h2 com bom impacto, mas não exagerado */
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    letter-spacing: 1.8px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Linha mais curta para minimalismo */
+    height: 3px; /* Linha mais fina */
+    background-color: var(--accent-gold); /* Dourado sólido */
+    border-radius: 2px;
+}
+
+/* Cabeçalho e Navegação */
+header {
+    background-color: rgba(10, 10, 10, 0.98); /* Quase opaco */
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px var(--shadow-color); /* Sombra mais séria */
+    backdrop-filter: blur(6px); /* Desfoque moderado */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 1.5px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.03);
+    color: var(--text-light); /* Muda para branco ao hover */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 40px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem; /* Texto de link sutil */
+    position: relative;
+    padding-bottom: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-gold);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+/* Burger Menu */
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger div {
+    width: 32px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    margin: 6px 0;
+    transition: all 0.4s ease;
+    border-radius: 1px;
+}
+
+/* Animação do Burger */
+.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* Seções Gerais */
+section {
+    padding: 100px 40px; /* Padding ajustado */
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/hero-bg.webp') no-repeat center center/cover;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 40px;
+    animation: heroLoad 1.5s ease-out forwards;
+}
+
+@keyframes heroLoad {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content {
+    max-width: 900px;
+    color: var(--text-light);
+}
+
+.hero h1 {
+    font-size: 4.8rem; /* Título impactante, mas não gigantesco */
+    margin-bottom: 25px;
+    color: var(--accent-gold);
+    text-shadow: 2px 2px 8px var(--shadow-color);
+    line-height: 1.1;
+}
+
+.hero .tagline {
+    font-size: 1.6rem;
+    font-weight: 300; /* Mais leve */
+    margin-bottom: 40px;
+    color: #cccccc;
+    animation: textFadeIn 2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes textFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.proposal-text {
+    background-color: var(--secondary-black); /* Fundo discreto para o texto */
+    padding: 35px;
+    border-radius: 8px; /* Menos arredondado */
+    margin-bottom: 40px;
+    text-align: left;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proposal-text:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.proposal-text p {
+    font-size: 1.1rem; /* Texto conciso */
+    margin-bottom: 15px;
+}
+
+.proposal-text ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.proposal-text ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 28px;
+}
+
+.proposal-text ul li::before {
+    content: '•'; /* Marcador simples e elegante */
+    color: var(--accent-gold);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem; /* Tamanho do marcador */
+    line-height: 1;
+}
+
+.btn {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 16px 35px;
+    border: none;
+    border-radius: 4px; /* Mais quadrado para minimalismo */
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn:hover {
+    background-color: var(--text-light); /* Fica branco ao hover */
+    color: var(--primary-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Categorias de Produtos */
+.categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 60px;
+}
+
+.categoria-item {
+    background-color: var(--secondary-black);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 12px 28px;
+    border-radius: 3px; /* Minimalista, quase sem arredondamento */
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.categoria-item:hover, .categoria-item.active {
+    background-color: var(--accent-gold);
+    color: var(--secondary-black); /* Inverte as cores ao hover/ativo */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Lista de Produtos (Catálogo) */
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: var(--secondary-black);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px; /* Menos arredondado */
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    position: relative;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px; /* Levemente arredondado */
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* NOVO: Zoom da imagem no card ao passar o mouse */
+.product-card img:hover {
+    transform: scale(1.08); /* Aumenta a imagem em 8% */
+    transition: transform 0.4s ease-out; /* Transição suave */
+}
+
+.product-card h3 {
+    color: var(--text-light);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mensagem de "Nenhum Produto" */
+.no-products-message {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 30px;
+    border: 1px dashed var(--border-subtle);
+    border-radius: 5px;
+    margin: 40px auto;
+    max-width: 500px;
+}
+
+
+/* Modal de Produtos (Detalhes) - Minimalista e Compacta */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Menos opaco, mais discreto */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out forwards;
+    backdrop-filter: blur(5px); /* Desfoque sutil */
+}
+
+.modal-content {
+    background-color: var(--secondary-black);
+    padding: 35px; /* Padding menor */
+    border: 2px solid var(--accent-gold); /* Borda mais fina */
+    border-radius: 10px;
+    width: 90%;
+    max-width: 750px; /* Modal mais compacta */
+    /* Altura será determinada pelo conteúdo, mas com um min-height */
+    min-height: 400px; /* Min height para consistência */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    color: var(--text-light);
+    animation: slideIn 0.4s ease-out forwards; /* Animação mais suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.close-button {
+    color: var(--accent-gold);
+    font-size: 2.5rem; /* Botão de fechar menor */
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-light);
+    transform: rotate(90deg) scale(1.05);
+}
+
+#modalProductName {
+    font-size: 2rem; /* Título da modal mais conciso */
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px var(--shadow-color);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Carrossel mais compacto */
+    height: 350px; /* Altura ajustada */
+    margin: 0 auto 25px auto;
+    overflow: hidden;
+    border: 1px solid var(--accent-gold); /* Borda fina */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-out; /* Transição mais suave */
+}
+
+.carousel-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+    background-color: var(--primary-dark); /* Fundo escuro */
+    cursor: zoom-in; /* Cursor de lupa */
+    transition: transform 0.2s ease-out; /* Transição suave para o zoom na modal */
+}
+
+/* NOVO: Zoom da imagem na modal */
+.carousel-images img.zoomed {
+    transform: scale(2); /* Zoom de 2x */
+    cursor: zoom-out; /* Cursor para sair do zoom */
+    object-fit: contain; /* Mantém a imagem inteira no zoom */
+    transform-origin: 50% 50%; /* Ponto de origem do zoom */
+}
+
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--accent-gold);
+    border: none;
+    padding: 12px 16px; /* Padding menor */
+    cursor: pointer;
+    font-size: 2rem; /* Setas menores */
+    transition: all 0.3s ease;
+    border-radius: 3px; /* Quase sem arredondamento */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-nav:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-nav.prev { left: 10px; }
+.carousel-nav.next { right: 10px; }
+
+#modalProductDescription {
+    font-size: 1rem; /* Descrição menor e objetiva */
+    text-align: justify;
+    max-height: 180px; /* Altura da descrição compacta */
+    overflow-y: auto;
+    padding-right: 10px;
+    line-height: 1.6;
+}
+
+/* Estilo da Scrollbar para a descrição da modal (Customizada) */
+#modalProductDescription::-webkit-scrollbar { width: 6px; }
+#modalProductDescription::-webkit-scrollbar-track { background: var(--secondary-black); border-radius: 10px; }
+#modalProductDescription::-webkit-scrollbar-thumb {
+    background-color: var(--accent-gold);
+    border-radius: 10px;
+    border: 1px solid var(--secondary-black);
+    transition: background 0.3s ease;
+}
+#modalProductDescription::-webkit-scrollbar-thumb:hover { background-color: var(--text-light); }
+
+/* Sobre Nós e Contato */
+.sobre-nos, .contato {
+    background-color: var(--secondary-black);
+    padding: 90px 40px;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.sobre-nos p, .contato p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.contact-info { margin-top: 35px; }
+
+.contact-info p {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.contact-info a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--text-light);
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: var(--accent-gold);
+    font-size: 1.4rem;
+}
+
+.social-media {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-media a {
+    color: var(--accent-gold);
+    font-size: 2.8rem;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.social-media a:hover {
+    color: var(--text-light);
+    transform: translateY(-6px) scale(1.1);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 35px 20px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.95rem;
+}
+
+/* Responsividade Aprimorada */
+@media (max-width: 1200px) {
+    nav { padding: 0 30px; }
+    .nav-links li { margin-left: 35px; }
+    .hero h1 { font-size: 4rem; }
+    h2 { font-size: 2.8rem; }
+    .carousel-container { height: 320px; }
+}
+
+@media (max-width: 992px) {
+    /* Menu Hambúrguer */
+    .nav-links {
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+        border-left: 2px solid var(--accent-gold);
+        box-shadow: -8px 0 20px var(--shadow-color);
+        background-color: var(--primary-dark); /* Garante que o fundo seja o preto principal */
+    }
+    .nav-links li { margin: 25px 0; }
+    .burger { display: block; }
+
+    .hero { min-height: 80vh; padding: 80px 30px; }
+    .hero h1 { font-size: 3.5rem; }
+    .hero .tagline { font-size: 1.4rem; }
+    .proposal-text { padding: 30px; }
+    .btn { padding: 14px 30px; font-size: 1.05rem; }
+    .categoria-item { font-size: 0.9rem; padding: 10px 22px; }
+    .lista-produtos { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .product-card img { height: 220px; }
+    .modal-content { padding: 30px; max-width: 700px; min-height: 380px; }
+    #modalProductName { font-size: 1.8rem; }
+    .carousel-container { height: 280px; }
+    .carousel-nav { font-size: 1.8rem; padding: 10px 14px; }
+    #modalProductDescription { font-size: 0.95rem; max-height: 150px; }
+    .social-media a { font-size: 2.5rem; }
+    section { padding: 80px 30px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { width: 85%; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero .tagline { font-size: 1.2rem; }
+    .proposal-text p, .proposal-text ul li { font-size: 1rem; }
+    h2 { font-size: 2.5rem; }
+    .lista-produtos { grid-template-columns: 1fr; }
+    .product-card img { height: 200px; }
+    .modal-content { padding: 25px; max-width: 90%; min-height: 350px; }
+    .close-button { font-size: 2.2rem; top: 8px; right: 15px; }
+    #modalProductName { font-size: 1.6rem; }
+    .carousel-container { height: 250px; }
+    .carousel-nav { font-size: 1.6rem; padding: 8px 12px; left: 8px; right: 8px; }
+    #modalProductDescription { font-size: 0.9rem; max-height: 130px; }
+    .contact-info p { font-size: 1.05rem; }
+    .social-media a { font-size: 2.2rem; }
+    section { padding: 70px 25px; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 1.8rem; }
+    .burger div { width: 28px; height: 2.5px; margin: 5px 0; }
+    .nav-links { width: 95%; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero .tagline { font-size: 1rem; }
+    .proposal-text { padding: 20px; }
+    .proposal-text ul li { padding-left: 22px; font-size: 0.95rem;}
+    .proposal-text ul li::before { font-size: 1.3rem; }
+    h2 { font-size: 2rem; margin-bottom: 50px; }
+    .btn { padding: 10px 22px; font-size: 0.95rem; }
+    .categorias { flex-direction: column; align-items: center; gap: 12px; }
+    .categoria-item { width: 90%; text-align: center; font-size: 0.85rem; padding: 8px 18px; }
+    .product-card { padding: 20px; }
+    .product-card img { height: 160px; }
+    .product-card h3 { font-size: 1.4rem; }
+    .modal-content { padding: 20px; min-height: 300px; }
+    .close-button { font-size: 2rem; top: 5px; right: 10px; }
+    #modalProductName { font-size: 1.4rem; margin-bottom: 15px; }
+    .carousel-container { height: 200px; margin-bottom: 20px; }
+    .carousel-nav { font-size: 1.4rem; padding: 6px 10px; }
+    #modalProductDescription { font-size: 0.8rem; max-height: 100px; }
+    .contact-info p { font-size: 0.95rem; }
+    .social-media a { font-size: 2rem; }
+    section { padding: 60px 15px; }
+}
