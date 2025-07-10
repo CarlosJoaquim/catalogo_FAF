@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tabela de preços dos produtos da FAF Comércio: bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, toalhas bordadas e camisas.">
-    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, toalhas bordadas, camisas, FAF Comércio">
-    <meta name="author" content="FAF Comércio">
+    <meta name="description" content="Tabela de preços dos produtos da YHAWEH EMPREEDIMENTO,LDA: bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, e camisas.">
+    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, camisas, YHAWEH EMPREEDIMENTO,LDA">
+    <meta name="author" content="YHAWEH EMPREEDIMENTO,LDA">
 
-    <title>Tabela de Preços - FAF Comércio</title>
+    <title>Tabela de Preços - YHAWEH EMPREEDIMENTO,LDA</title>
 
-    <!-- Fontes (certifique-se de que estas links estejam no seu index.html também para consistência) -->
+    <!-- Fontes (certifique-se de que estes links estejam no seu index.html também para consistência) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
@@ -17,21 +17,129 @@
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Seu arquivo CSS principal para manter o estilo -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Seu arquivo CSS principal para manter o estilo base (se houver um) -->
+    <!-- Este arquivo é importante para estilos globais que você não quer duplicar aqui -->
+    <link rel="stylesheet" href="css/style.css"> 
+    
     <style>
-        /* Estilos específicos para a página de preços (pode ser movido para style.css se preferir) */
-        .price-list-section {
-            padding: 80px 20px;
-            max-width: 1000px;
+        /* Estilos específicos para a página de preços e a nova paleta de cores */
+        
+        /* --- Cores Globais (para consistência, se não estiverem no style.css) --- */
+        :root {
+            --primary-color: #1A1A1A; /* Preto/Carvão (nova cor principal) */
+            --secondary-color: #F39C12; /* Laranja Vibrante (mantido) */
+            --text-dark: #222222; /* Texto muito escuro */
+            --text-medium: #444444; /* Texto médio */
+            --text-light: #E0E0E0; /* Texto claro */
+            --bg-light: #f8f8f8; /* Fundo claro */
+            --bg-lighter: #EFEFEF; /* Fundo um pouco mais claro */
+        }
+
+        /* --- Estilos Gerais e Reset Básico (ajustados para novas cores) --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header e Navegação (ajustados para novas cores) --- */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Burger menu (apenas para mobile) */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            z-index: 1001;
+        }
+
+        .burger div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Seções (ajustadas para novas cores e animação) --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Tabela de Preços (ajustada para novas cores) --- */
+        .price-list-section {
             text-align: center;
         }
 
         .price-list-section h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #004D00; /* Cor verde do seu tema */
+            color: var(--primary-color);
         }
 
         .price-table {
@@ -41,7 +149,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
             border-radius: 8px;
-            overflow: hidden; /* Garante que bordas arredondadas funcionem na tabela */
+            overflow: hidden;
         }
 
         .price-table th,
@@ -52,85 +160,197 @@
         }
 
         .price-table th {
-            background-color: #004D00; /* Cor verde do seu tema */
-            color: #FFD700; /* Cor dourada do seu tema */
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
         }
 
         .price-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: var(--bg-light); /* Fundo claro para linhas pares */
         }
 
         .price-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: var(--bg-lighter); /* Fundo um pouco mais escuro no hover */
         }
 
         .price-table td:last-child {
             font-weight: bold;
-            color: #004D00; /* Cor verde do seu tema */
+            color: var(--primary-color); /* Preço em cor primária */
             font-size: 1.1rem;
             text-align: right;
         }
 
         .price-image {
-            width: 80px; /* Tamanho da imagem na tabela */
+            width: 80px;
             height: 80px;
             object-fit: cover;
             border-radius: 4px;
-            vertical-align: middle; /* Alinha a imagem no meio da célula */
+            vertical-align: middle;
             margin-right: 15px;
-            border: 1px solid #eee; /* Borda sutil para a imagem */
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .price-image:hover {
+            transform: scale(1.05);
         }
 
         .product-name-cell {
             display: flex;
             align-items: center;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            color: var(--text-dark); /* Cor do texto do nome do produto */
+        }
+
+        .product-name-cell:hover {
+            color: var(--secondary-color); /* Muda a cor do texto no hover */
         }
 
         .disclaimer {
             font-size: 0.9rem;
-            color: #777;
+            color: var(--text-medium);
             margin-top: 20px;
         }
 
-        /* Responsividade para a tabela de preços */
+        /* --- Modal de Detalhes do Produto (para a página de preços) --- */
+        .price-product-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85); /* Fundo mais opaco */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .price-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .price-modal-close-button {
+            color: #666; /* Cor mais escura para o X */
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .price-modal-close-button:hover,
+        .price-modal-close-button:focus {
+            color: var(--primary-color); /* Muda para a cor primária no hover */
+        }
+
+        .price-modal-image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .price-modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .price-modal-name {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .price-modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        /* --- Footer (ajustado para novas cores) --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Animações (mantidas) --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Media Queries para Responsividade (ajustadas para novas cores e tamanhos) --- */
+
+        /* Tablet e Mobile */
         @media (max-width: 768px) {
-            .price-list-section {
-                padding: 50px 15px;
+            body { font-size: 15px; }
+            section { padding: 40px 15px; }
+            nav { padding: 0 15px; }
+            .logo { font-size: 1.4rem; }
+            .nav-links { top: 70px; height: calc(100vh - 70px); width: 75%; padding-top: 30px; }
+            .nav-links li { margin: 20px 0; }
+            .burger { display: flex; }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            @keyframes navLinkFade {
+                from { opacity: 0; transform: translateX(50px); }
+                to { opacity: 1; transform: translateX(0px); }
             }
 
-            .price-list-section h2 {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-
-            .price-table, .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr {
-                display: block; /* Transforma a tabela em blocos */
-            }
-
-            .price-table thead tr {
-                position: absolute;
-                top: -9999px; /* Esconde o cabeçalho original */
-                left: -9999px;
-            }
-
-            .price-table tr {
-                border: 1px solid #ccc;
-                margin-bottom: 15px;
-                border-radius: 8px;
-            }
-
-            .price-table td {
-                border: none;
-                position: relative;
-                padding-left: 50%; /* Espaço para o pseudo-elemento */
-                text-align: right;
-            }
-
+            /* Tabela de Preços no Mobile */
+            .price-list-section { padding: 40px 15px; }
+            .price-list-section h2 { font-size: 2rem; margin-bottom: 30px; }
+            .price-table, .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr { display: block; }
+            .price-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+            .price-table tr { border: 1px solid #ccc; margin-bottom: 15px; border-radius: 8px; }
+            .price-table td { border: none; position: relative; padding-left: 50%; text-align: right; }
             .price-table td:before {
-                content: attr(data-label); /* Usa o atributo data-label como "cabeçalho" */
+                content: attr(data-label);
                 position: absolute;
                 left: 6px;
                 width: 45%;
@@ -138,18 +358,31 @@
                 white-space: nowrap;
                 text-align: left;
                 font-weight: bold;
-                color: #004D00; /* Cor verde do seu tema */
+                color: var(--primary-color);
             }
+            .price-table td:last-child { text-align: right; }
+            .price-image { width: 60px; height: 60px; margin-right: 10px; }
 
-            .price-table td:last-child {
-                text-align: right;
-            }
+            /* Modal de Detalhes na página de preços (mobile) */
+            .price-modal-content { padding: 20px; max-width: 95%; max-height: 95vh; }
+            .price-modal-name { font-size: 1.6rem; }
+            .price-modal-description { font-size: 1rem; }
+            .price-modal-image-container { height: 200px; }
+        }
 
-            .price-image {
-                width: 60px;
-                height: 60px;
-                margin-right: 10px;
-            }
+        /* Telas Extremamente Pequenas (celulares muito pequenos) */
+        @media (max-width: 480px) {
+            .logo { font-size: 1.2rem; }
+            header nav { padding: 0 10px; }
+            .nav-links { top: 60px; height: calc(100vh - 60px); width: 85%; }
+
+            .price-list-section h2 { font-size: 1.8rem; }
+            .price-table td { padding-left: 48%; }
+            .price-image { width: 45px; height: 45px; }
+
+            .price-modal-image-container { height: 150px; }
+            .price-modal-name { font-size: 1.4rem; }
+            .price-modal-description { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -160,7 +393,7 @@
             <ul class="nav-links">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#produtos">Produtos</a></li>
-                <li><a href="precos.html">Preços</a></li> <!-- Link para esta nova página -->
+                <li><a href="precos.html">Preços</a></li> <!-- Link para esta página -->
                 <li><a href="index.html#contato">Contato</a></li>
             </ul>
             <div class="burger">
@@ -183,7 +416,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-product-id="bases-mesa">
                         <td data-label="Produto">
                             <div class="product-name-cell">
                                 <img src="images/bases_mesa/base_mesa01.jpg" alt="Base de Mesa Decorativa" class="price-image">
@@ -191,19 +424,19 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Diversos modelos e tamanhos para decoração.</td>
-                        <td data-label="Preço Unitário">35.000,00</td>
+                        <td data-label="Preço Unitário">27.000,00</td>
                     </tr>
-                    <tr>
+                    <tr data-product-id="toalhas-diversas">
                         <td data-label="Produto">
                             <div class="product-name-cell">
-                                <img src="images/toalha/toalha03.png" alt="Toalha de Banho" class="price-image">
+                                <img src="images/toalha/toalha1.png" alt="Toalha de Banho" class="price-image">
                                 Toalhas (Diversas)
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Toalhas de banho, rosto e lavabo em algodão.</td>
-                        <td data-label="Preço Unitário">12.000,00</td>
+                        <td data-label="Preço Unitário">38.400,00</td>
                     </tr>
-                    <tr>
+                    <tr data-product-id="cortinas">
                         <td data-label="Produto">
                             <div class="product-name-cell">
                                 <img src="images/cortinas/cortina01.jpg" alt="Cortina Moderna" class="price-image">
@@ -211,9 +444,9 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Vários tecidos, cores e tamanhos para ambientes.</td>
-                        <td data-label="Preço Unitário">28.000,00</td>
+                        <td data-label="Preço Unitário">Depende das Medidas</td>
                     </tr>
-                    <tr>
+                    <tr data-product-id="fatos-safari">
                         <td data-label="Produto">
                             <div class="product-name-cell">
                                 <img src="images/fato_safari/safari01.jpg" alt="Fato Safari Masculino" class="price-image">
@@ -221,9 +454,9 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Conforto e estilo para atividades ao ar livre.</td>
-                        <td data-label="Preço Unitário">65.000,00</td>
+                        <td data-label="Preço Unitário">130.000,00</td>
                     </tr>
-                    <tr>
+                    <tr data-product-id="fatos-sociais">
                         <td data-label="Produto">
                             <div class="product-name-cell">
                                 <img src="images/fato/Fato.png" alt="Fato Social Elegante" class="price-image">
@@ -231,19 +464,9 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Elegância e sofisticação para eventos formais.</td>
-                        <td data-label="Preço Unitário">95.000,00</td>
+                        <td data-label="Preço Unitário">184.500,00</td>
                     </tr>
-                    <tr>
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/toalha_bordada/bordada01.jpg" alt="Toalha Bordada Personalizada" class="price-image">
-                                Toalhas com Bordado
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Toalhas personalizadas com bordados exclusivos.</td>
-                        <td data-label="Preço Unitário">18.000,00</td>
-                    </tr>
-                    <tr>
+                    <tr data-product-id="camisas">
                         <td data-label="Produto">
                             <div class="product-name-cell">
                                 <img src="images/camisola/camisa01.png" alt="Camisa Casual" class="price-image">
@@ -251,7 +474,7 @@
                             </div>
                         </td>
                         <td data-label="Descrição Breve">Variedade de modelos para casual e formal.</td>
-                        <td data-label="Preço Unitário">22.000,00</td>
+                        <td data-label="Preço Unitário">em análise...</td>
                     </tr>
                     <!-- Adicione mais produtos aqui, se necessário -->
                 </tbody>
@@ -264,10 +487,113 @@
         <p>&copy; 2025 YHAWEH EMPREEDIMENTO,LDA. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Script JS para o menu hambúrguer e animação de seção nesta página -->
+    <!-- Modal de Detalhes do Produto para a Página de Preços -->
+    <div id="priceProductModal" class="price-product-modal">
+        <div class="price-modal-content">
+            <span class="price-modal-close-button">&times;</span>
+            <div class="price-modal-image-container">
+                <img id="priceModalImage" src="" alt="Imagem do Produto" class="price-modal-image">
+            </div>
+            <h3 id="priceModalName" class="price-modal-name"></h3>
+            <p id="priceModalDescription" class="price-modal-description"></p>
+        </div>
+    </div>
+
+    <!-- Script JS para o menu hambúrguer e a nova lógica da modal de detalhes -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Lógica do Menu Hambúrguer (copiada do script.js para garantir que funcione nesta página)
+            // Dados dos Produtos para a página de preços (incluindo descrições e imagens para a modal)
+            const productsData = [
+                {
+                    id: 'bases-mesa',
+                    name: 'Bases de Mesa',
+                    description: 'Nossas bases de mesa são cuidadosamente confeccionadas para adicionar um toque de elegância e funcionalidade à sua decoração. Disponíveis em diversos materiais como algodão, linho e misturas sintéticas, oferecem durabilidade e fácil manutenção. Perfeitas para uso diário ou eventos especiais, protegendo sua mesa com estilo.',
+                    images: ['images/bases_mesa/base_mesa01.jpg', 'images/bases_mesa/base_mesa02.jpg', 'images/bases_mesa/base_mesa03.jpg']
+                },
+                {
+                    id: 'toalhas-diversas',
+                    name: 'Toalhas (Diversas)',
+                    description: 'Oferecemos uma vasta gama de toalhas de alta qualidade para banho, rosto e lavabo. Feitas com algodão 100% puro, garantem máxima absorção e maciez. Disponíveis em diversas cores e tamanhos para atender às suas necessidades de conforto e estilo no dia a dia.',
+                    images: ['images/toalha/toalha1.png', 'images/toalha/toalha02.png', 'images/toalha/toalha03.png']
+                },
+                {
+                    id: 'cortinas',
+                    name: 'Cortinas',
+                    description: 'Nossas cortinas são a solução perfeita para controlar a luz, garantir privacidade e complementar a decoração de qualquer ambiente. Com uma seleção de tecidos que variam de leves e translúcidos a densos e blackout, e uma paleta de cores vasta, você encontrará a opção ideal para seu lar ou escritório.',
+                    images: ['images/cortinas/cortina01.jpg', 'images/cortinas/cortina02.jpg', 'images/cortinas/cortina03.jpg']
+                },
+                {
+                    id: 'fatos-safari',
+                    name: 'Fatos Safari',
+                    description: 'Desenvolvidos para oferecer o máximo conforto e durabilidade, nossos fatos safari são ideais para aventuras ao ar livre, trabalho em campo ou simplesmente para um estilo casual e robusto. Confeccionados com tecidos resistentes e respiráveis, possuem múltiplos bolsos e um design funcional.',
+                    images: ['images/fato_safari/safari01.jpg', 'images/fato_safari/safari02.jpg', 'images/fato_safari/safari03.jpg']
+                },
+                {
+                    id: 'fatos-sociais',
+                    name: 'Fatos Sociais',
+                    description: 'Para ocasiões que exigem elegância e sofisticação, nossos fatos sociais são a escolha perfeita. Com cortes modernos e tecidos de alta qualidade, garantem um caimento impecável e um visual distinto. Disponíveis em diversas cores e estilos para atender a todos os gostos e eventos.',
+                    images: ['images/fato/Fato.png', 'images/fato/fato01.png', 'images/fato/fato02.png', 'images/fato/fato03.png']
+                },
+                {
+                    id: 'camisas',
+                    name: 'Camisas',
+                    description: 'Nossa coleção de camisas oferece opções versáteis para qualquer ocasião, do casual ao formal. Confeccionadas com tecidos premium que garantem conforto e durabilidade, nossos modelos apresentam cortes modernos e acabamento impecável. Encontre a camisa perfeita para o seu estilo.',
+                    images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
+                }
+            ];
+
+            // Referências aos elementos da modal de preços
+            const priceProductModal = document.getElementById('priceProductModal');
+            const priceModalImage = document.getElementById('priceModalImage');
+            const priceModalName = document.getElementById('priceModalName');
+            const priceModalDescription = document.getElementById('priceModalDescription');
+            const priceModalCloseButton = document.querySelector('.price-modal-close-button');
+
+            // --- Lógica da Modal de Detalhes do Produto ---
+
+            /**
+             * Abre a modal de detalhes do produto na página de preços.
+             * @param {string} productId - O ID do produto a ser exibido.
+             */
+            function openPriceProductModal(productId) {
+                const product = productsData.find(p => p.id === productId);
+
+                if (product) {
+                    priceModalImage.src = product.images[0]; // Exibe a primeira imagem do produto
+                    priceModalImage.alt = product.name;
+                    priceModalName.textContent = product.name;
+                    priceModalDescription.textContent = product.description;
+                    priceProductModal.style.display = 'flex'; // Exibe a modal
+                    document.body.style.overflow = 'hidden'; // Impede o scroll do corpo da página
+                }
+            }
+
+            // Adiciona evento de clique a cada linha da tabela para abrir a modal
+            const productRows = document.querySelectorAll('.price-table tbody tr');
+            productRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const productId = row.dataset.productId;
+                    if (productId) {
+                        openPriceProductModal(productId);
+                    }
+                });
+            });
+
+            // Fecha a modal de detalhes do produto
+            priceModalCloseButton.addEventListener('click', () => {
+                priceProductModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Reabilita o scroll do corpo da página
+            });
+
+            // Fecha a modal clicando fora dela
+            window.addEventListener('click', (event) => {
+                if (event.target === priceProductModal) {
+                    priceProductModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // --- Lógica do Menu Hambúrguer (copiada do script.js para garantir que funcione nesta página) ---
             const navBurger = document.querySelector('.burger');
             const navLinks = document.querySelector('.nav-links');
             const navIndividualLinks = document.querySelectorAll('.nav-links li');
@@ -295,7 +621,7 @@
                 });
             });
 
-            // Animação de seção ao scroll (para a seção de preços)
+            // --- Animação de seção ao scroll (para a seção de preços) ---
             const priceSection = document.getElementById('price-list');
             const observerOptions = {
                 root: null,
