@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'uniforme-selecao',
             name: 'Equipamento de Treino - Seleção',
             category: 'uniformes',
-            description: 'Equipamentos de treino com design exclusivo para as seleções da FAF, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e personalizações.',
+            description: 'Equipamentos de treino com design exclusivo para as seleções da FAF, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e Modelos.',
             images: ['images/fato_treino04.png', 'images/fato_treino02.png', 'images/fato_treino03.png', 'images/fato_treino.png', 'images/fato_treino05.png']
         },
         {
@@ -16,23 +16,41 @@ document.addEventListener('DOMContentLoaded', () => {
             images: ['images/toalha/toalha1.png', 'images/toalha/toalha02.png', 'images/toalha/toalha03.png']
         },
         {
-            id: 'camisola-cerimonial',
+            id: 'vestuario-cerimonial',
             name: 'Camisa - Angola',
             category: 'camisolas',
             description: 'Camisolas elegantes para eventos cerimoniais ou uso casual, incorporando elementos da marca Angola. Confortáveis, com corte moderno e acabamento impecável. Perfeitas para representar o espírito angolano com estilo.',
             images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
         },
-       
         {
-            id: 'item-promocional-bandeira',
+            id: 'fato-social',
             name: 'Fato Social ',
             category: 'promocionais',
             description: 'Fato Social de alta qualidade, ideais para eventos e jogos oficiais. Bordado com a bandeira de Angola ou logotipos da FAF. Um item perfeito para engajar fãs e promover a marca.',
             images: ['images/fato/Fato.png', 'images/fato/fato01.png', 'images/fato/fato02.png', 'images/fato/fato03.png']
         },
-        // Adicione mais produtos conforme necessário
+        {
+            id: 'itens-promocional',
+            name: 'Itens Promocional',
+            category: 'promocionais',
+            description: 'Itens promocionais e vestuário diverso de alta qualidade, ideais para eventos e jogos oficiais. Inclui vídeos e imagens que promovem a marca e engajam os fãs.',
+            images: [
+                'images/promo/promo_video01.mp4',
+                'images/promo/promo_video.mp4',
+                'images/promo/promo01.jpg',
+                'images/promo/promo02.jpg',
+                'images/promo/promo03.jpg',
+                'images/promo/promo04.jpg',
+                'images/promo/promo05.jpg',
+                'images/promo/promo06.jpg',
+                'images/promo/promo07.jpg',
+                'images/promo/promo08.jpg',
+                'images/promo/promo09.jpg'
+            ]
+        }
     ];
 
+    // Referências aos elementos do DOM
     const productListings = document.querySelector('.lista-produtos');
     const productModal = document.getElementById('productModal');
     const modalProductName = document.getElementById('modalProductName');
@@ -49,46 +67,222 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const navIndividualLinks = document.querySelectorAll('.nav-links li');
 
-    let currentProductIndex = 0; // Para o carrossel
-    let currentImages = []; // Para armazenar as imagens do produto atual no carrossel
+    let currentProductIndex = 0; // Controla o slide atual do carrossel na modal
+    let currentMediaArray = []; // Armazena as mídias (imagens/vídeos) do produto atual
 
-    // 2. Carregamento Dinâmico de Produtos
+    // --- Funções Principais ---
+
+    /**
+     * Exibe os produtos na lista principal.
+     * Cria cards de produto com base nos dados, exibindo a primeira mídia.
+     * Para vídeos, mostra uma thumbnail e um ícone de play.
+     * @param {Array} filteredProducts - Lista de produtos a serem exibidos.
+     */
     function displayProducts(filteredProducts) {
         productListings.innerHTML = ''; // Limpa os produtos existentes
+
         if (filteredProducts.length === 0) {
             productListings.innerHTML = '<p class="no-products-message">Nenhum produto encontrado nesta categoria.</p>';
             return;
         }
+
         filteredProducts.forEach(product => {
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
-            productCard.dataset.id = product.id; // Para identificar qual produto foi clicado
+            productCard.dataset.id = product.id; // Define o ID do produto para identificação ao clicar
+
+            const firstMedia = product.images[0];
+            let mediaHtml = '';
+
+            if (firstMedia.endsWith('.mp4')) {
+                // Se for um vídeo, cria uma thumbnail com um ícone de play
+                mediaHtml = `
+                    <div class="video-thumbnail-placeholder">
+                        <video src="${firstMedia}#t=1" preload="metadata" muted></video>
+                        <i class="fas fa-play-circle video-play-icon"></i>
+                    </div>`;
+            } else {
+                // Se for uma imagem
+                mediaHtml = `<img src="${firstMedia}" alt="${product.name}">`;
+            }
 
             productCard.innerHTML = `
-                <img src="${product.images[0]}" alt="${product.name}">
+                ${mediaHtml}
                 <h3>${product.name}</h3>
             `;
             productListings.appendChild(productCard);
 
-            // Adiciona o evento de clique para abrir a modal
+            // Adiciona o evento de clique para abrir a modal com os detalhes do produto
             productCard.addEventListener('click', () => openProductModal(product.id));
         });
     }
+
+    /**
+     * Abre a modal de detalhes do produto.
+     * Carrega o nome, descrição e todas as mídias do produto no carrossel da modal.
+     * @param {string} productId - O ID do produto a ser exibido.
+     */
+    function openProductModal(productId) {
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+            modalProductName.textContent = product.name;
+            modalProductDescription.textContent = product.description;
+            currentMediaArray = product.images; // Atualiza a array de mídias para o carrossel
+
+            loadCarouselMedia(currentMediaArray); // Carrega as mídias no carrossel da modal
+            productModal.style.display = 'flex'; // Exibe a modal
+            document.body.style.overflow = 'hidden'; // Impede o scroll do corpo da página
+        }
+    }
+
+    /**
+     * Carrega as mídias (imagens e vídeos) no carrossel dentro da modal.
+     * Cria elementos <img/> ou <video/> e adiciona lógica de zoom para imagens.
+     * @param {Array} mediaArray - Array de URLs das mídias.
+     */
+    function loadCarouselMedia(mediaArray) {
+        carouselImagesContainer.innerHTML = ''; // Limpa o carrossel existente
+
+        mediaArray.forEach(src => {
+            let mediaElement;
+            if (src.endsWith('.mp4')) {
+                // Cria um elemento de vídeo com controles nativos
+                mediaElement = document.createElement('video');
+                mediaElement.src = src;
+                mediaElement.controls = true; // Mostra os controles de vídeo (play, pause, volume, etc.)
+                mediaElement.muted = true; // Inicia mutado para melhor experiência do usuário (autoplay policies)
+                mediaElement.loop = true; // Repete o vídeo
+                mediaElement.autoplay = false; // Não inicia automaticamente ao carregar a modal
+                mediaElement.preload = 'auto'; // Pré-carrega o vídeo
+                mediaElement.classList.add('modal-media', 'modal-video'); // Classes para estilização
+            } else {
+                // Cria um elemento de imagem
+                mediaElement = document.createElement('img');
+                mediaElement.src = src;
+                mediaElement.alt = modalProductName.textContent; // Texto alternativo para acessibilidade
+                mediaElement.classList.add('modal-media', 'modal-image'); // Classes para estilização
+            }
+
+            carouselImagesContainer.appendChild(mediaElement);
+
+            // Adiciona a lógica de zoom para imagens (apenas se for uma imagem)
+            if (mediaElement.tagName === 'IMG') {
+                mediaElement.addEventListener('click', (e) => {
+                    mediaElement.classList.toggle('zoomed');
+                    if (mediaElement.classList.contains('zoomed')) {
+                        modalProductDescription.style.overflowY = 'hidden'; // Impede scroll da descrição
+                        prevButton.style.display = 'none'; // Esconde botões de navegação
+                        nextButton.style.display = 'none';
+                        const rect = mediaElement.getBoundingClientRect();
+                        const x = (e.clientX - rect.left) / rect.width;
+                        const y = (e.clientY - rect.top) / rect.height;
+                        mediaElement.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                    } else {
+                        modalProductDescription.style.overflowY = 'auto'; // Habilita scroll
+                        mediaElement.style.transformOrigin = 'center center';
+                        updateCarouselButtonsVisibility(); // Reexibe botões de navegação
+                    }
+                });
+
+                mediaElement.addEventListener('mousemove', (e) => {
+                    if (mediaElement.classList.contains('zoomed')) {
+                        const rect = mediaElement.getBoundingClientRect();
+                        const x = (e.clientX - rect.left) / rect.width;
+                        const y = (e.clientY - rect.top) / rect.height;
+                        mediaElement.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                    }
+                });
+
+                mediaElement.addEventListener('mouseleave', () => {
+                    if (mediaElement.classList.contains('zoomed')) {
+                        mediaElement.classList.remove('zoomed');
+                        mediaElement.style.transformOrigin = 'center center';
+                        modalProductDescription.style.overflowY = 'auto';
+                        updateCarouselButtonsVisibility();
+                    }
+                });
+            }
+        });
+        currentProductIndex = 0; // Reseta o índice do carrossel para o primeiro item
+        updateCarousel(); // Atualiza a exibição do carrossel
+    }
+
+    /**
+     * Atualiza a visibilidade dos botões de navegação do carrossel (anterior/próximo).
+     * Esconde os botões se a mídia estiver com zoom ou se for o primeiro/último item.
+     */
+    function updateCarouselButtonsVisibility() {
+        if (carouselImagesContainer.children.length === 0) {
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'none';
+            return;
+        }
+
+        const currentMedia = carouselImagesContainer.children[currentProductIndex];
+
+        // Esconde botões se a imagem estiver com zoom
+        if (currentMedia && currentMedia.classList.contains('zoomed')) {
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'none';
+        } else {
+            // Exibe ou esconde os botões com base na posição do carrossel
+            prevButton.style.display = currentProductIndex === 0 ? 'none' : 'flex';
+            nextButton.style.display = currentProductIndex === currentMediaArray.length - 1 ? 'none' : 'flex';
+
+            // Se houver apenas 1 mídia, esconde ambos os botões de qualquer forma
+            if (currentMediaArray.length <= 1) {
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+            }
+        }
+    }
+
+    /**
+     * Atualiza a posição do carrossel e controla a reprodução de vídeos.
+     * Pausa outros vídeos ao navegar para um novo slide.
+     */
+    function updateCarousel() {
+        if (carouselImagesContainer.children.length === 0) return; // Evita erro se não houver mídias
+
+        // Pausa todos os vídeos que não são o slide atual
+        Array.from(carouselImagesContainer.children).forEach((media, index) => {
+            if (media.tagName === 'VIDEO') {
+                if (index !== currentProductIndex) {
+                    media.pause();
+                    media.currentTime = 0; // Volta para o início
+                } else {
+                    // Para o vídeo atual, pode desmutar e tentar tocar (se a política de autoplay permitir)
+                    media.muted = false; // Desmuta o vídeo visível
+                    media.play().catch(error => {
+                        // Captura erros de autoplay se o navegador impedir
+                        console.warn("Autoplay impedido. O usuário precisará interagir para dar play.", error);
+                        // Você pode adicionar uma UI aqui para indicar ao usuário para clicar no play
+                    });
+                }
+            }
+        });
+
+        const mediaWidth = carouselImagesContainer.children[0].clientWidth;
+        carouselImagesContainer.style.transform = `translateX(-${currentProductIndex * mediaWidth}px)`;
+
+        updateCarouselButtonsVisibility(); // Atualiza a visibilidade dos botões após a navegação
+    }
+
+    // --- Event Listeners ---
 
     // Inicialmente exibe todos os produtos e ativa a categoria "Todos"
     displayProducts(products);
     document.querySelector('.categoria-item[data-categoria="all"]').classList.add('active');
 
-    // 3. Filtragem por Categoria
+    // Listener para o filtro de categorias
     categoryItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Remove a classe 'active' de todos os itens de categoria
-            categoryItems.forEach(cat => cat.classList.remove('active'));
-            // Adiciona a classe 'active' ao item clicado
-            item.classList.add('active');
+            categoryItems.forEach(cat => cat.classList.remove('active')); // Remove 'active' de todos
+            item.classList.add('active'); // Adiciona 'active' ao clicado
 
             const category = item.dataset.categoria;
-            if (category === 'all') { // Se for a categoria "Todos"
+            if (category === 'all') {
                 displayProducts(products);
             } else {
                 const filtered = products.filter(product => product.category === category);
@@ -97,109 +291,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Adicionar funcionalidade para o botão "Explore Nossos Produtos"
+    // Listener para o botão "Explore Nossos Produtos"
     callToActionBtn.addEventListener('click', () => {
         document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // 4. Abertura da Modal
-    function openProductModal(productId) {
-        const product = products.find(p => p.id === productId);
-        if (product) {
-            modalProductName.textContent = product.name;
-            modalProductDescription.textContent = product.description;
-            currentImages = product.images; // Guarda as imagens do produto atual
-            loadCarouselImages(currentImages);
-            productModal.style.display = 'flex'; // Exibe a modal
-            document.body.style.overflow = 'hidden'; // Evita scroll no body
-        }
-    }
-
-    // Carrega as imagens no carrossel
-    function loadCarouselImages(images) {
-        carouselImagesContainer.innerHTML = '';
-        images.forEach(src => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = modalProductName.textContent; // Alt text para acessibilidade
-            carouselImagesContainer.appendChild(img);
-
-            // Adiciona o evento de clique para zoom na imagem da modal
-            img.addEventListener('click', (e) => {
-                img.classList.toggle('zoomed');
-                // Se a imagem estiver em zoom, desabilita a rolagem do modal
-                // e desabilita a navegação do carrossel
-                if (img.classList.contains('zoomed')) {
-                    modalProductDescription.style.overflowY = 'hidden';
-                    prevButton.style.display = 'none';
-                    nextButton.style.display = 'none';
-                    // Posiciona o zoom no clique inicial
-                    const rect = img.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width;
-                    const y = (e.clientY - rect.top) / rect.height;
-                    img.style.transformOrigin = `${x * 100}% ${y * 100}%`;
-                } else {
-                    modalProductDescription.style.overflowY = 'auto'; // Reabilita a rolagem
-                    img.style.transformOrigin = 'center center'; // Reseta a origem
-                    updateCarousel(); // Reabilita os botões de navegação conforme necessário
-                }
-            });
-
-            // Adiciona evento para mover a imagem com o mouse (apenas quando zoomed)
-            img.addEventListener('mousemove', (e) => {
-                if (img.classList.contains('zoomed')) {
-                    const rect = img.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width;
-                    const y = (e.clientY - rect.top) / rect.height;
-                    img.style.transformOrigin = `${x * 100}% ${y * 100}%`;
-                } else {
-                    img.style.transformOrigin = 'center center'; // Reseta quando não está zoomed
-                }
-            });
-
-            // Adiciona evento para resetar o zoom se o mouse sair (útil se o clique não for pego)
-            img.addEventListener('mouseleave', () => {
-                if (img.classList.contains('zoomed')) {
-                    img.classList.remove('zoomed');
-                    img.style.transformOrigin = 'center center';
-                    modalProductDescription.style.overflowY = 'auto';
-                    updateCarousel();
-                }
-            });
-        });
-        currentProductIndex = 0;
-        updateCarousel();
-    }
-
-    // Atualiza a posição do carrossel
-    function updateCarousel() {
-        if (carouselImagesContainer.children.length === 0) return; // Evita erro se não houver imagens
-        const imageWidth = carouselImagesContainer.children[0].clientWidth;
-        carouselImagesContainer.style.transform = `translateX(-${currentProductIndex * imageWidth}px)`;
-
-        // Esconde/mostra botões de navegação se não houver mais imagens
-        // Certifica-se de que não está em modo zoom para mostrar/esconder
-        const currentImage = carouselImagesContainer.children[currentProductIndex];
-        if (currentImage && currentImage.classList.contains('zoomed')) {
-             prevButton.style.display = 'none';
-             nextButton.style.display = 'none';
-        } else {
-            prevButton.style.display = currentProductIndex === 0 ? 'none' : 'flex';
-            nextButton.style.display = currentProductIndex === currentImages.length - 1 ? 'none' : 'flex';
-            // Se houver apenas 1 imagem, esconde ambos os botões
-            if (currentImages.length <= 1) {
-                prevButton.style.display = 'none';
-                nextButton.style.display = 'none';
-            }
-        }
-    }
-
-    // Navegação do Carrossel
+    // Navegação do Carrossel (botão anterior)
     prevButton.addEventListener('click', () => {
-        // Impede a navegação se a imagem atual estiver em zoom
-        const currentImage = carouselImagesContainer.children[currentProductIndex];
-        if (currentImage && currentImage.classList.contains('zoomed')) {
-            return;
+        const currentMedia = carouselImagesContainer.children[currentProductIndex];
+        if (currentMedia && currentMedia.classList.contains('zoomed')) {
+            return; // Impede navegação se a imagem estiver com zoom
         }
         if (currentProductIndex > 0) {
             currentProductIndex--;
@@ -207,38 +308,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Navegação do Carrossel (botão próximo)
     nextButton.addEventListener('click', () => {
-        // Impede a navegação se a imagem atual estiver em zoom
-        const currentImage = carouselImagesContainer.children[currentProductIndex];
-        if (currentImage && currentImage.classList.contains('zoomed')) {
-            return;
+        const currentMedia = carouselImagesContainer.children[currentProductIndex];
+        if (currentMedia && currentMedia.classList.contains('zoomed')) {
+            return; // Impede navegação se a imagem estiver com zoom
         }
-        if (currentProductIndex < currentImages.length - 1) {
+        if (currentProductIndex < currentMediaArray.length - 1) {
             currentProductIndex++;
             updateCarousel();
         }
     });
 
-    // Ajusta o carrossel ao redimensionar a janela
+    // Ajusta o carrossel ao redimensionar a janela (se a modal estiver aberta)
     window.addEventListener('resize', () => {
-        // Apenas se a modal estiver aberta, recalcule e atualize o carrossel
         if (productModal.style.display === 'flex') {
             updateCarousel();
         }
     });
 
-    // 6. Fechamento da Modal
+    // Fechamento da Modal pelo botão "X"
     closeButton.addEventListener('click', () => {
         productModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Habilita scroll no body novamente
+        document.body.style.overflow = 'auto'; // Reabilita o scroll do corpo
 
-        // Reseta qualquer zoom ativo na imagem da modal ao fechar
-        const currentImage = carouselImagesContainer.children[currentProductIndex];
-        if (currentImage && currentImage.classList.contains('zoomed')) {
-            currentImage.classList.remove('zoomed');
-            currentImage.style.transformOrigin = 'center center';
-            modalProductDescription.style.overflowY = 'auto';
-        }
+        // Pausa e reseta vídeos e remove zoom de imagens ao fechar a modal
+        Array.from(carouselImagesContainer.children).forEach(media => {
+            if (media.tagName === 'VIDEO') {
+                media.pause();
+                media.currentTime = 0;
+            }
+            if (media.tagName === 'IMG' && media.classList.contains('zoomed')) {
+                media.classList.remove('zoomed');
+                media.style.transformOrigin = 'center center';
+                modalProductDescription.style.overflowY = 'auto';
+            }
+        });
     });
 
     // Fechar modal clicando fora dela
@@ -246,32 +351,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === productModal) {
             productModal.style.display = 'none';
             document.body.style.overflow = 'auto';
-            // Reseta qualquer zoom ativo na imagem da modal ao fechar
-            const currentImage = carouselImagesContainer.children[currentProductIndex];
-            if (currentImage && currentImage.classList.contains('zoomed')) {
-                currentImage.classList.remove('zoomed');
-                currentImage.style.transformOrigin = 'center center';
-                modalProductDescription.style.overflowY = 'auto';
-            }
+
+            // Pausa e reseta vídeos e remove zoom de imagens ao fechar a modal
+            Array.from(carouselImagesContainer.children).forEach(media => {
+                if (media.tagName === 'VIDEO') {
+                    media.pause();
+                    media.currentTime = 0;
+                }
+                if (media.tagName === 'IMG' && media.classList.contains('zoomed')) {
+                    media.classList.remove('zoomed');
+                    media.style.transformOrigin = 'center center';
+                    modalProductDescription.style.overflowY = 'auto';
+                }
+            });
         }
     });
 
     // Lógica do Menu Hambúrguer (Responsividade)
     navBurger.addEventListener('click', () => {
-        // Toggle nav
-        navLinks.classList.toggle('nav-active');
+        navLinks.classList.toggle('nav-active'); // Ativa/desativa a navegação
 
-        // Animate links
         navIndividualLinks.forEach((link, index) => {
             if (link.style.animation) {
-                link.style.animation = '';
+                link.style.animation = ''; // Reseta a animação
             } else {
+                // Adiciona animação com delay escalonado
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
 
-        // Burger Animation
-        navBurger.classList.toggle('toggle');
+        navBurger.classList.toggle('toggle'); // Anima o ícone do hambúrguer
     });
 
     // Fechar menu hambúrguer ao clicar em um link
@@ -280,32 +389,32 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navLinks.classList.contains('nav-active')) {
                 navLinks.classList.remove('nav-active');
                 navBurger.classList.remove('toggle');
-                navIndividualLinks.forEach(item => item.style.animation = ''); // Reseta a animação ao fechar
+                navIndividualLinks.forEach(item => item.style.animation = ''); // Reseta animação ao fechar
             }
         });
     });
 
-    // --- CÓDIGO PARA ANIMAÇÃO DE SEÇÕES (NOVO) ---
+  
+    
+
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 // Quando 10% da seção estiver visível
+        root: null, // O viewport é o elemento raiz
+        rootMargin: '0px', // Nenhuma margem extra
+        threshold: 0.1 // A callback é executada quando 10% do elemento está visível
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Para animar apenas uma vez
+                entry.target.classList.add('visible'); // Adiciona classe para iniciar a animação
+                observer.unobserve(entry.target); // Para de observar após a animação (para animar apenas uma vez)
             }
         });
     }, observerOptions);
 
     sections.forEach(section => {
-        sectionObserver.observe(section);
+        sectionObserver.observe(section); // Começa a observar cada seção
     });
-    // --- FIM CÓDIGO ANIMAÇÃO SEÇÕES ---
-
 });
