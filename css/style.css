@@ -726,3 +726,287 @@ footer {
     section { padding: 60px 15px; }
 }
 
+/* --- Media Query para Telas Menores (Dispositivos Móveis) --- */
+
+/* Aplicar para telas com largura máxima de 768px (tablets em modo retrato e celulares) */
+@media (max-width: 768px) {
+
+    /* --- Geral para Mobile --- */
+    body {
+        font-size: 16px; /* Ajusta o tamanho da fonte base para melhor legibilidade */
+    }
+
+    section {
+        padding: 50px 15px; /* Reduz o padding das seções para aproveitar mais espaço */
+    }
+
+    /* --- Header e Navegação (Menu Hambúrguer) --- */
+    nav {
+        padding: 0 15px; /* Ajusta o padding do nav */
+    }
+
+    .logo {
+        font-size: 1.5rem; /* Diminui o tamanho do logo */
+    }
+
+    .nav-links {
+        /* Ocupa a tela inteira quando aberto */
+        position: fixed;
+        right: 0;
+        top: 80px; /* Alinha abaixo do header, assumindo altura de 80px */
+        height: calc(100vh - 80px); /* Altura total da viewport menos o header */
+        background-color: #004D00; /* Fundo do menu mobile */
+        flex-direction: column; /* Links em coluna */
+        align-items: center; /* Centraliza links */
+        width: 70%; /* Ocupa 70% da largura da tela */
+        transform: translateX(100%); /* Esconde o menu inicialmente para a direita */
+        transition: transform 0.5s ease-in-out; /* Transição suave */
+        z-index: 999; /* Garante que fique acima de outros elementos */
+        padding-top: 40px; /* Espaçamento no topo do menu */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2); /* Sombra para dar profundidade */
+    }
+
+    .nav-links li {
+        margin: 20px 0; /* Espaçamento vertical entre os links */
+        opacity: 0; /* Inicialmente invisível para animação de fade-in */
+    }
+
+    /* Quando o menu está ativo */
+    .nav-links.nav-active {
+        transform: translateX(0%); /* Desliza o menu para a posição visível */
+    }
+
+    /* Animação dos links individuais quando o menu está ativo */
+    .nav-links.nav-active li {
+        animation: navLinkFade 0.5s ease forwards;
+    }
+
+    /* Exibe o ícone do hambúrguer */
+    .burger {
+        display: flex; /* Agora visível */
+    }
+
+    /* Animação do ícone do hambúrguer (toggle) */
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+        opacity: 0; /* Esconde a linha do meio */
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Animação dos links do menu (definida no JS, mas é bom tê-la no CSS) */
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    /* --- Seção Home --- */
+    #home h1 {
+        font-size: 2.5rem; /* Reduz o tamanho do título principal */
+        margin-bottom: 15px;
+    }
+
+    #home p {
+        font-size: 1rem; /* Reduz o tamanho do parágrafo */
+        padding: 0 10px; /* Adiciona padding lateral */
+    }
+
+    .call-to-action {
+        padding: 12px 25px; /* Ajusta o padding do botão CTA */
+        font-size: 1rem;
+    }
+
+    /* --- Seção de Produtos --- */
+    #produtos h2 {
+        font-size: 2rem; /* Reduz o tamanho do título da seção */
+        margin-bottom: 30px;
+    }
+
+    .categorias {
+        flex-direction: column; /* Categorias em coluna */
+        align-items: center; /* Centraliza as categorias */
+        gap: 10px; /* Reduz o espaçamento entre as categorias */
+    }
+
+    .categoria-item {
+        width: 90%; /* Faz com que os itens de categoria ocupem quase toda a largura */
+        text-align: center;
+        padding: 12px 15px;
+    }
+
+    .lista-produtos {
+        grid-template-columns: 1fr; /* Apenas uma coluna para os produtos */
+        gap: 20px; /* Reduz o espaçamento entre os cards */
+    }
+
+    .product-card img,
+    .product-card .video-thumbnail-placeholder video {
+        height: 180px; /* Ajusta a altura da miniatura do produto */
+    }
+
+    .product-card h3 {
+        font-size: 1.2rem; /* Reduz o tamanho do título do card */
+        margin: 10px 10px 15px;
+    }
+
+    /* --- Modal de Produto --- */
+    .product-modal {
+        padding: 10px; /* Reduz o padding geral da modal */
+    }
+
+    .modal-content {
+        width: 95%; /* Ocupa mais largura na tela */
+        padding: 15px; /* Reduz o padding interno da modal */
+        max-height: 95vh; /* Permite que a modal ocupe mais da tela verticalmente */
+        overflow: hidden; /* Garante que o conteúdo não vaze */
+    }
+
+    .close-button {
+        font-size: 30px; /* Diminui o tamanho do botão fechar */
+        top: 10px;
+        right: 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.4rem; /* Diminui o título da modal */
+        margin-bottom: 15px;
+    }
+
+    .modal-body {
+        flex-direction: column; /* Mantém a disposição em coluna para modal */
+        gap: 15px; /* Reduz o espaçamento entre a mídia e a descrição */
+    }
+
+    .modal-carousel {
+        height: 250px; /* Altura do carrossel na modal */
+    }
+
+    .modal-description {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte da descrição */
+        line-height: 1.6;
+        padding-top: 10px;
+    }
+
+    .carousel-nav {
+        padding: 8px 12px; /* Ajusta padding dos botões de navegação do carrossel */
+        font-size: 1.2rem;
+    }
+
+    .modal-media.zoomed {
+        transform: scale(1.5); /* Menos zoom para telas menores */
+    }
+
+
+    /* --- Seção de Contato --- */
+    .contact-info {
+        flex-direction: column; /* Ítens de contato em coluna */
+        gap: 20px;
+    }
+
+    .contact-item {
+        font-size: 1rem;
+    }
+
+    .contact-item i {
+        font-size: 1.8rem;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+}
+
+/* --- Media Query para Telas Extremamente Pequenas (celulares muito pequenos) --- */
+
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    #home p {
+        font-size: 0.9rem;
+    }
+
+    .call-to-action {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .modal-carousel {
+        height: 200px; /* Reduz ainda mais a altura do carrossel em telas muito pequenas */
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+}
+/* --- Media Query para Telas Menores (Dispositivos Móveis) --- */
+@media (max-width: 768px) {
+
+    /* ... seu CSS existente para mobile ... */
+
+    /* --- Modal de Produto - Ajustes de Carrossel e Botões --- */
+    .modal-carousel {
+        height: 250px; /* Mantém a altura ajustada para mobile */
+    }
+
+    .carousel-nav {
+        /* Ajustes para os botões de navegação do carrossel */
+        padding: 6px 10px; /* Reduz o padding para diminuir o tamanho */
+        font-size: 1.1rem; /* Diminui o tamanho do ícone */
+        background-color: rgba(0, 0, 0, 0.6); /* Levemente mais opaco para visibilidade */
+        border-radius: 50%; /* Torna os botões redondos */
+        width: 35px; /* Define uma largura e altura fixas para circular */
+        height: 35px;
+        display: flex; /* Garante que o ícone fique centralizado no botão redondo */
+        align-items: center;
+        justify-content: center;
+        /* Garante que não se sobreponham totalmente, dando um pequeno respiro */
+        top: 50%; /* Centraliza verticalmente */
+        transform: translateY(-50%); /* Ajuste fino para centralização vertical */
+    }
+
+    .carousel-nav.prev {
+        left: 8px; /* Mais perto da borda esquerda */
+    }
+
+    .carousel-nav.next {
+        right: 8px; /* Mais perto da borda direita */
+    }
+
+    /* Oculta os botões quando a mídia estiver com zoom no mobile também */
+    .modal-media.zoomed + .carousel-nav.prev,
+    .modal-media.zoomed + .carousel-nav.next {
+        display: none;
+    }
+}
+
+/* --- Media Query para Telas Extremamente Pequenas (celulares muito pequenos) --- */
+@media (max-width: 480px) {
+    /* ... seu CSS existente para telas muito pequenas ... */
+
+    .modal-carousel {
+        height: 200px; /* Mantém a altura ajustada */
+    }
+
+    .carousel-nav {
+        /* Ajustes para telas ainda menores, se necessário */
+        padding: 5px 8px; /* Reduz um pouco mais o padding */
+        font-size: 1rem; /* Diminui ainda mais o ícone */
+        width: 30px; /* Botões ainda menores */
+        height: 30px;
+        left: 5px;
+        right: 5px;
+    }
+}
