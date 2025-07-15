@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Equipamento de Treino - Seleção',
             category: 'uniformes',
             description: 'Equipamentos de treino com design exclusivo para as seleções da FAF, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e Modelos.',
-            images: ['images/fato_treino04.png', 'images/fato_treino02.png', 'images/fato_treino03.png', 'images/fato_treino.png', 'images/fato_treino05.png']
+            images: ['images/fato_treino04.png', 'images/fato_treino03.png', 'images/fato_treino05.png']
         },
         {
             id: 'toalha-faf',
