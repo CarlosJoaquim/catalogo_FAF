@@ -3,797 +3,777 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tabela de preços e lista completa de produtos e serviços da YHAWEH EMPREEDIMENTO,LDA: bordados, personalização, brindes, restauração de interiores.">
-    <meta name="keywords" content="preços, lista de produtos, bases de mesa, toalhas, cortinas, fatos safari, fatos sociais, camisas, bordados, personalização, louças, talheres, brindes, eventos, restauração de interiores, forro de cadeira, forro de sofá, YHAWEH EMPREEDIMENTO,LDA">
+    <meta name="description" content="Tabela de preços completa e lista detalhada de produtos e serviços da YHAWEH EMPREEDIMENTO,LDA: bordados, personalização, brindes, restauração de interiores.">
+    <meta name="keywords" content="preços Angola, produtos personalizados, bordados Luanda, fatos safari, toalhas de banho, cortinas sob medida, restauração de móveis, brindes corporativos">
     <meta name="author" content="YHAWEH EMPREEDIMENTO,LDA">
 
-    <title>Preços e Serviços - YHAWEH EMPREEDIMENTO,LDA</title>
+    <title>Preços e Serviços Detalhados - YHAWEH EMPREEDIMENTO,LDA</title>
 
-    <!-- Fontes (certifique-se de que estes links estejam no seu index.html também para consistência) -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome para ícones -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Seu arquivo CSS principal para manter o estilo base (se houver um) -->
-    <!-- Este arquivo é importante para estilos globais que você não quer duplicar aqui -->
-    <link rel="stylesheet" href="css/style.css"> 
+    <!-- Swiper JS para carrosséis -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/preco.css">
     
-    <style>
-        /* Estilos específicos para a página de preços e a nova paleta de cores */
-        
-        /* --- Cores Globais (para consistência, se não estiverem no style.css) --- */
-        :root {
-            --primary-color: #1A1A1A; /* Preto/Carvão (nova cor principal) */
-            --secondary-color: #F39C12; /* Laranja Vibrante (mantido) */
-            --text-dark: #222222; /* Texto muito escuro */
-            --text-medium: #444444; /* Texto médio */
-            --text-light: #E0E0E0; /* Texto claro */
-            --bg-light: #f8f8f8; /* Fundo claro */
-            --bg-lighter: #EFEFEF; /* Fundo um pouco mais claro */
-        }
-
-        /* --- Estilos Gerais e Reset Básico (ajustados para novas cores) --- */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* --- Header e Navegação (ajustados para novas cores) --- */
-        header {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Burger menu (apenas para mobile) */
-        .burger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            z-index: 1001;
-        }
-
-        .burger div {
-            width: 30px;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        /* --- Seções (ajustadas para novas cores e animação) --- */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Tabela de Preços (ajustada para novas cores) --- */
-        .price-list-section {
-            text-align: center;
-        }
-
-        .price-list-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--primary-color);
-        }
-
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .price-table th,
-        .price-table td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-
-        .price-table th {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .price-table tr:nth-child(even) {
-            background-color: var(--bg-light); /* Fundo claro para linhas pares */
-        }
-
-        .price-table tr:hover {
-            background-color: var(--bg-lighter); /* Fundo um pouco mais escuro no hover */
-        }
-
-        .price-table td:last-child {
-            font-weight: bold;
-            color: var(--primary-color); /* Preço em cor primária */
-            font-size: 1.1rem;
-            text-align: right;
-        }
-
-        .price-image {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-            vertical-align: middle;
-            margin-right: 15px;
-            border: 1px solid #eee;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .price-image:hover {
-            transform: scale(1.05);
-        }
-
-        .product-name-cell {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            color: var(--text-dark); /* Cor do texto do nome do produto */
-        }
-
-        .product-name-cell:hover {
-            color: var(--secondary-color); /* Muda a cor do texto no hover */
-        }
-
-        .disclaimer {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            margin-top: 20px;
-        }
-
-        /* --- Modal de Detalhes do Produto (para a página de preços) --- */
-        .price-product-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.85); /* Fundo mais opaco */
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .price-modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 700px;
-            width: 90%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .price-modal-close-button {
-            color: #666; /* Cor mais escura para o X */
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .price-modal-close-button:hover,
-        .price-modal-close-button:focus {
-            color: var(--primary-color); /* Muda para a cor primária no hover */
-        }
-
-        .price-modal-image-container {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background-color: #eee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .price-modal-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .price-modal-name {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .price-modal-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-medium);
-            text-align: justify;
-            margin-bottom: 10px;
-        }
-
-        /* --- Nova Seção de Serviços e Outros Produtos --- */
-        .services-section {
-            background-color: #fff;
-            text-align: center;
-            padding: 80px 20px;
-            margin-top: 40px; /* Espaçamento do conteúdo acima */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .services-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--primary-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .service-item {
-            background-color: var(--bg-lighter); /* Fundo claro para itens de serviço */
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .service-item h3 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .service-item h3 i {
-            color: var(--secondary-color); /* Ícone em laranja vibrante */
-            font-size: 1.8rem;
-        }
-
-        .service-item p {
-            font-size: 1rem;
-            color: var(--text-medium);
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .service-item ul {
-            list-style-type: disc;
-            padding-left: 25px;
-            color: var(--text-medium);
-        }
-
-        .service-item ul li {
-            margin-bottom: 8px;
-        }
-
-        .service-item .example-image {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid #ddd;
-        }
-
-        /* --- Footer (ajustado para novas cores) --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* --- Animações (mantidas) --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- Media Queries para Responsividade (ajustadas para novas cores e tamanhos) --- */
-
-        /* Tablet e Mobile */
-        @media (max-width: 768px) {
-            body { font-size: 15px; }
-            section { padding: 40px 15px; }
-            nav { padding: 0 15px; }
-            .logo { font-size: 1.4rem; }
-            .nav-links { top: 70px; height: calc(100vh - 70px); width: 75%; padding-top: 30px; }
-            .nav-links li { margin: 20px 0; }
-            .burger { display: flex; }
-            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
-            .toggle .line2 { opacity: 0; }
-            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-            @keyframes navLinkFade {
-                from { opacity: 0; transform: translateX(50px); }
-                to { opacity: 1; transform: translateX(0px); }
-            }
-
-            /* Tabela de Preços no Mobile */
-            .price-list-section { padding: 40px 15px; }
-            .price-list-section h2 { font-size: 2rem; margin-bottom: 30px; }
-            .price-table, .price-table thead, .price-table tbody, .price-table th, .price-table td, .price-table tr { display: block; }
-            .price-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-            .price-table tr { border: 1px solid #ccc; margin-bottom: 15px; border-radius: 8px; }
-            .price-table td { border: none; position: relative; padding-left: 50%; text-align: right; }
-            .price-table td:before {
-                content: attr(data-label);
-                position: absolute;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: var(--primary-color);
-            }
-            .price-table td:last-child { text-align: right; }
-            .price-image { width: 60px; height: 60px; margin-right: 10px; }
-
-            /* Modal de Detalhes na página de preços (mobile) */
-            .price-modal-content { padding: 20px; max-width: 95%; max-height: 95vh; }
-            .price-modal-name { font-size: 1.6rem; }
-            .price-modal-description { font-size: 1rem; }
-            .price-modal-image-container { height: 200px; }
-
-            /* Nova Seção de Serviços no Mobile */
-            .services-section { padding: 40px 15px; margin-top: 30px; }
-            .services-section h2 { font-size: 2rem; margin-bottom: 30px; }
-            .services-grid { grid-template-columns: 1fr; gap: 20px; }
-            .service-item { padding: 20px; }
-            .service-item h3 { font-size: 1.4rem; }
-            .service-item h3 i { font-size: 1.6rem; }
-            .service-item p { font-size: 0.95rem; }
-            .service-item ul { padding-left: 20px; }
-            .service-item ul li { margin-bottom: 5px; }
-            .service-item .example-image { max-height: 150px; }
-        }
-
-        /* Telas Extremamente Pequenas (celulares muito pequenos) */
-        @media (max-width: 480px) {
-            .logo { font-size: 1.2rem; }
-            header nav { padding: 0 10px; }
-            .nav-links { top: 60px; height: calc(100vh - 60px); width: 85%; }
-
-            .price-list-section h2 { font-size: 1.8rem; }
-            .price-table td { padding-left: 48%; }
-            .price-image { width: 45px; height: 45px; }
-
-            .price-modal-image-container { height: 150px; }
-            .price-modal-name { font-size: 1.4rem; }
-            .price-modal-description { font-size: 0.9rem; }
-
-            .services-section h2 { font-size: 1.8rem; }
-            .service-item h3 { font-size: 1.2rem; }
-            .service-item h3 i { font-size: 1.4rem; }
-            .service-item p { font-size: 0.9rem; }
-            .service-item .example-image { max-height: 120px; }
-        }
-    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">YAHWEH EMPREEDIMENTO,LDA</div>
+        <div class="container nav-container">
+            <div class="logo">YAHWEH EMPREEDIMENTOS,LDA</div>
             <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#home">Início</a></li>
                 <li><a href="index.html#produtos">Produtos</a></li>
-                <li><a href="precos.html">Preços</a></li> <!-- Link para esta página -->
-                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="precos.html">Preços</a></li>
+                <li><a href="index.html#contato">Contacto</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
-        <section id="price-list" class="price-list-section visible">
-            <h2> Tabela de Preços</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Descrição Breve</th>
-                        <th>Preço Unitário (AOA)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-product-id="bases-mesa">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/bases_mesa/base_mesa01.jpg" alt="Base de Mesa Decorativa" class="price-image">
-                                Bases de Mesa
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Diversos modelos e tamanhos para decoração.</td>
-                        <td data-label="Preço Unitário">27.000,00</td>
-                    </tr>
-                    <tr data-product-id="toalhas-diversas">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/toalha/toalha1.png" alt="Toalha de Banho" class="price-image">
-                                Toalhas (Diversas)
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Toalhas de banho, rosto e lavabo em algodão.</td>
-                        <td data-label="Preço Unitário">37.000,00</td>
-                    </tr>
-                    <tr data-product-id="cortinas">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/cortinas/cortina01.jpg" alt="Cortina Moderna" class="price-image">
-                                Cortinas
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Vários tecidos, cores e tamanhos para ambientes.</td>
-                        <td data-label="Preço Unitário">Análise - Medidas</td>
-                    </tr>
-                    <tr data-product-id="fatos-safari">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/fato_safari/safari01.jpg" alt="Fato Safari Masculino" class="price-image">
-                                Fatos Safari
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Conforto e estilo para atividades ao ar livre.</td>
-                        <td data-label="Preço Unitário">97.000,00</td>
-                    </tr>
-                    <tr data-product-id="fatos-sociais">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/fato/Fato.png" alt="Fato Social Elegante" class="price-image">
-                                Fatos Sociais
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Elegância e sofisticação para eventos formais.</td>
-                        <td data-label="Preço Unitário">187.000,00</td>
-                    </tr>
-                    <tr data-product-id="camisas">
-                        <td data-label="Produto">
-                            <div class="product-name-cell">
-                                <img src="images/camisola/camisa01.png" alt="Camisa Casual" class="price-image">
-                                Camisas
-                            </div>
-                        </td>
-                        <td data-label="Descrição Breve">Variedade de modelos para casual e formal.</td>
-                        <td data-label="Preço Unitário">processando...</td>
-                    </tr>
-                    <!-- Adicione mais produtos aqui, se necessário -->
-                </tbody>
-            </table>
-            <p class="disclaimer">Os preços são indicativos e podem variar. Para valores exatos e encomendas personalizadas, por favor, entre em contato.</p>
+        <!-- Seção de Tabela de Preços -->
+        <section id="price-list" class="price-list-section">
+            <div class="container">
+                <h2 class="section-title">Tabela de Preços</h2>
+                
+                <div class="price-table-container">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Descrição</th>
+                                <th>Preço (AOA)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Bases de Mesa -->
+                            <tr data-product-id="bases-mesa">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Base de Mesa" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Bases de Mesa</span>
+                                            <span class="product-category">Decoração & Utilitário</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Bases decorativas em diversos materiais e padrões para todos os tipos de mesa</td>
+                                <td>27.000,00</td>
+                            </tr>
+                            
+                            <!-- Toalhas -->
+                            <tr data-product-id="toalhas-banho">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Toalha de Banho" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Toalha de Banho</span>
+                                            <span class="product-category">Tamanho Grande (70x140cm)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Toalha de algodão 100% egípcio, alta absorção e maciez premium</td>
+                                <td>37.000,00</td>
+                            </tr>
+                            
+                            <tr data-product-id="toalhas-rosto">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Toalha de Rosto" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Toalha de Rosto</span>
+                                            <span class="product-category">Tamanho Médio (50x90cm)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Toalha facial em algodão puro, ideal para uso diário</td>
+                                <td>25.000,00</td>
+                            </tr>
+                            
+                            <tr data-product-id="toalhas-mao">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Toalha de Mão" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Toalha de Mão</span>
+                                            <span class="product-category">Tamanho Pequeno (30x50cm)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Toalha para mãos em algodão, perfeita para lavabos</td>
+                                <td>18.000,00</td>
+                            </tr>
+                            
+                            <!-- Cortinas -->
+                            <tr data-product-id="cortinas">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cortinas" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Cortinas</span>
+                                            <span class="product-category">Sob Medida</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Cortinas personalizadas em diversos tecidos e estilos</td>
+                                <td>Sob Consulta</td>
+                            </tr>
+                            
+                            <!-- Fatos Safari -->
+                            <tr data-product-id="fatos-safari">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fato Safari" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Fato Safari</span>
+                                            <span class="product-category">Masculino</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Conjunto completo para actividades ao ar livre, tecido resistente</td>
+                                <td>97.000,00</td>
+                            </tr>
+                            
+                            <!-- Fatos Sociais -->
+                            <tr data-product-id="fatos-sociais">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fato Social" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Fato Social</span>
+                                            <span class="product-category">Masculino - Elegância</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Fato completo para ocasiões formais, tecidos premium</td>
+                                <td>187.000,00</td>
+                            </tr>
+                            
+                            <!-- Camisas -->
+                            <tr data-product-id="camisas-sociais">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Camisa Social" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Camisa Social</span>
+                                            <span class="product-category">Formal</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Camisa de colarinho para eventos formais, várias cores</td>
+                                <td>45.000,00</td>
+                            </tr>
+                            
+                            <tr data-product-id="camisas-casual">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Camisa Casual" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Camisa Casual</span>
+                                            <span class="product-category">Dia-a-dia</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Camisa confortável para uso diário, vários modelos</td>
+                                <td>35.000,00</td>
+                            </tr>
+                            
+                            <tr data-product-id="camisas-polo">
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Camisa Polo" class="product-image protected-image">
+                                        <div>
+                                            <span class="product-name">Camisa Polo</span>
+                                            <span class="product-category">Esporte/Elegante</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Polo em algodão piquet, ideal para look casual elegante</td>
+                                <td>32.000,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="disclaimer">
+                    * Os preços são indicativos e podem variar conforme personalização e quantidade. <br>
+                    ** Para produtos sob medida (como cortinas), o preço final será calculado após análise das especificações. <br>
+                    *** Contacte-nos para orçamentos personalizados e grandes encomendas.
+                </p>
+            </div>
         </section>
 
-        <!-- Nova Seção de Serviços e Outros Produtos -->
-        <section id="services-and-more" class="services-section visible">
-            <h2>Nossos Serviços e Outros Produtos</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3><i class="fas fa-cut"></i> Bordados Personalizados</h3>
-                    <p>Transformamos qualquer peça de tecido em uma obra de arte exclusiva. Realizamos bordados de alta qualidade em:</p>
-                    <ul>
-                        <li><strong>Uniformes:</strong> Logos de empresas, escolas, equipas desportivas.</li>
-                        <li><strong>Vestuário:</strong> Camisas, polos, casacos, bonés, fatos de treino.</li>
-                        <li><strong>Artigos de Casa:</strong> Toalhas, lençóis, guardanapos, roupões.</li>
-                        <li><strong>Brindes Têxteis:</strong> Sacolas, mochilas, porta-chaves de tecido.</li>
-                    </ul>
-                    <p><strong>Tamanho do Serviço:</strong> Desde pequenas quantidades para uso pessoal até grandes volumes para empresas e eventos.</p>
-                    <img src="images/servicos/bordado_exemplo.jpg" alt="Exemplo de Bordado em Tecido" class="example-image">
-                </div>
+        <!-- Carrossel de Destaques -->
+       
 
-                <div class="service-item">
-                    <h3><i class="fas fa-utensils"></i> Personalização de Louças e Talheres</h3>
-                    <p>Dê um toque único aos seus utensílios de mesa com a nossa personalização. Ideal para:</p>
-                    <ul>
-                        <li><strong>Restaurantes e Hotéis:</strong> Branding em louças e talheres.</li>
-                        <li><strong>Eventos Especiais:</strong> Casamentos, aniversários, batizados.</li>
-                        <li><strong>Brindes Corporativos:</strong> Louças e talheres com logo da empresa.</li>
-                        <li><strong>Uso Pessoal:</strong> Conjuntos com iniciais ou designs exclusivos.</li>
-                    </ul>
-                    <p><strong>Tamanho do Serviço:</strong> Personalização individual ou em grandes lotes, com gravação a laser ou técnicas de pintura especializadas.</p>
-                    <img src="images/servicos/louca_exemplo.jpg" alt="Exemplo de Louça Personalizada" class="example-image">
-                </div>
-
-                <div class="service-item">
-                    <h3><i class="fas fa-gift"></i> Brindes para Eventos e Ocasiões</h3>
-                    <p>Criamos brindes memoráveis e de alta qualidade para qualquer evento ou ocasião formal, como encontros corporativos, conferências, feiras ou celebrações especiais. Oferecemos:</p>
-                    <ul>
-                        <li><strong>Artigos Personalizados:</strong> Canetas, cadernos, garrafas, power banks.</li>
-                        <li><strong>Kits Exclusivos:</strong> Combinando diversos itens personalizados.</li>
-                        <li><strong>Embalagens Temáticas:</strong> Para valorizar ainda mais o brinde.</li>
-                    </ul>
-                    <p><strong>Tamanho do Serviço:</strong> Desde pequenas tiragens para eventos íntimos até milhares de unidades para grandes conferências.</p>
-                    <img src="images/servicos/brinde_exemplo.jpg" alt="Exemplo de Brinde Personalizado" class="example-image">
-                </div>
-
-                <div class="service-item">
-                    <h3><i class="fas fa-couch"></i> Restauração e Acabamento de Interiores</h3>
-                    <p>Dê uma nova vida ao seu espaço com os nossos serviços de restauração e acabamento, garantindo um toque de classe e sofisticação:</p>
-                    <ul>
-                        <li><strong>Cortinas Personalizadas:</strong> Confeção e instalação de cortinas sob medida, com tecidos e designs exclusivos.</li>
-                        <li><strong>Forro de Cadeiras e Sofás:</strong> Renovação de estofos, troca de tecidos e enchimentos para móveis antigos ou desgastados.</li>
-                        <li><strong>Almofadas Decorativas:</strong> Criação de almofadas personalizadas que complementam a sua decoração.</li>
-                        <li><strong>Pequenos Retoques:</strong> Ajustes e reparos em elementos têxteis do seu espaço.</li>
-                    </ul>
-                    <p><strong>Tamanho do Serviço:</strong> Projetos para residências, escritórios, hotéis e espaços comerciais, adaptados à sua necessidade.</p>
-                    <img src="images/servicos/restauracao_exemplo.jpg" alt="Exemplo de Restauração de Sofá" class="example-image">
+        <!-- Seção de Serviços -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Nossos Serviços Especializados</h2>
+                
+                <div class="services-grid">
+                    <!-- Bordados Personalizados -->
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bordados Personalizados" class="service-image protected-image">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <i class="fas fa-cut service-icon"></i>
+                                Bordados Personalizados
+                            </h3>
+                            <p class="service-description">
+                                Transformamos qualquer peça de tecido em uma obra de arte exclusiva com nossos bordados de alta precisão e qualidade.
+                            </p>
+                            <ul class="service-features">
+                                <li>Bordado computadorizado para máxima precisão</li>
+                                <li>Mais de 50 cores de fios disponíveis</li>
+                                <li>Logotipos, nomes, desenhos personalizados</li>
+                                <li>Trabalhamos com todos os tipos de tecido</li>
+                                <li>Serviço rápido e com garantia de qualidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Personalização de Louças -->
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1556910633-8b8c9d6b8b8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Personalização de Louças" class="service-image protected-image">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <i class="fas fa-utensils service-icon"></i>
+                                Personalização de Louças
+                            </h3>
+                            <p class="service-description">
+                                Dê um toque único aos seus utensílios de mesa com técnicas de personalização duráveis e elegantes.
+                            </p>
+                            <ul class="service-features">
+                                <li>Gravação a laser para resultados permanentes</li>
+                                <li>Pintura manual com técnicas especiais</li>
+                                <li>Personalização para eventos (casamentos, aniversários)</li>
+                                <li>Brindes corporativos com logotipos</li>
+                                <li>Conjuntos completos personalizados</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Brindes Corporativos -->
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Brindes Corporativos" class="service-image protected-image">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <i class="fas fa-gift service-icon"></i>
+                                Brindes Corporativos
+                            </h3>
+                            <p class="service-description">
+                                Criamos brindes memoráveis que reforçam a imagem da sua empresa e deixam uma impressão duradoura.
+                            </p>
+                            <ul class="service-features">
+                                <li>Ampla variedade de produtos personalizáveis</li>
+                                <li>Desenvolvimento de conceitos exclusivos</li>
+                                <li>Embalagens personalizadas</li>
+                                <li>Produção de pequenas e grandes quantidades</li>
+                                <li>Entrega em todo o território nacional</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Restauração de Interiores -->
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="https://images.unsplash.com/photo-1583845112203-454c7c1319f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Restauração de Interiores" class="service-image protected-image">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <i class="fas fa-couch service-icon"></i>
+                                Restauração de Interiores
+                            </h3>
+                            <p class="service-description">
+                                Renovamos e transformamos os elementos têxteis do seu espaço, dando nova vida a móveis e ambientes.
+                            </p>
+                            <ul class="service-features">
+                                <li>Forro e renovação de sofás e cadeiras</li>
+                                <li>Confeção de cortinas sob medida</li>
+                                <li>Produção de almofadas decorativas</li>
+                                <li>Reparação de estofos danificados</li>
+                                <li>Consultoria de design de interiores</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 YHAWEH EMPREEDIMENTO,LDA. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Modal de Detalhes do Produto para a Página de Preços -->
-    <div id="priceProductModal" class="price-product-modal">
-        <div class="price-modal-content">
-            <span class="price-modal-close-button">&times;</span>
-            <div class="price-modal-image-container">
-                <img id="priceModalImage" src="" alt="Imagem do Produto" class="price-modal-image">
+    <!-- Modal de Detalhes do Produto -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalProductName"></h3>
+                <p class="modal-subtitle" id="modalProductCategory"></p>
             </div>
-            <h3 id="priceModalName" class="price-modal-name"></h3>
-            <p id="priceModalDescription" class="price-modal-description"></p>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="main-image-container">
+                        <img id="modalMainImage" src="" alt="" class="main-image protected-image">
+                    </div>
+                    <div class="thumbnail-container" id="thumbnailContainer">
+                        <!-- Thumbnails serão adicionados dinamicamente -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description" id="modalProductDescription"></p>
+                    
+                    <div class="modal-features">
+                        <div class="feature-item">
+                            <h4 class="feature-title">
+                                <i class="fas fa-ruler-combined feature-icon"></i>
+                                Dimensões
+                            </h4>
+                            <p class="feature-value" id="modalDimensions"></p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4 class="feature-title">
+                                <i class="fas fa-palette feature-icon"></i>
+                                Cores Disponíveis
+                            </h4>
+                            <p class="feature-value" id="modalColors"></p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4 class="feature-title">
+                                <i class="fas fa-tshirt feature-icon"></i>
+                                Materiais
+                            </h4>
+                            <p class="feature-value" id="modalMaterials"></p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4 class="feature-title">
+                                <i class="fas fa-tools feature-icon"></i>
+                                Cuidados
+                            </h4>
+                            <p class="feature-value" id="modalCare"></p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4 class="feature-title">
+                                <i class="fas fa-box-open feature-icon"></i>
+                                Disponibilidade
+                            </h4>
+                            <p class="feature-value" id="modalAvailability"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p class="price-note">* Preço por unidade. Contacte-nos para grandes quantidades.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Script JS para o menu hambúrguer e a nova lógica da modal de detalhes -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>YAHWEH EMPREEDIMENTOS,LDA</h3>
+                    <p>Especialistas em produtos têxteis e serviços de personalização em Luanda, Angola.</p>
+                    <p>Comprometidos com qualidade e satisfação do cliente desde 2010.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contactos</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua da Fampa, Nº 123, Luanda</p>
+                    <p><i class="fas fa-phone"></i> +244 938 534 066</p>
+                    <p><i class="fas fa-envelope"></i> oficinadafampahome@gmail.com</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Horário</h3>
+                    <p>Segunda - Sexta: 9h00 - 18h00</p>
+                    <p>Sábado: 9h00 - 14h00</p>
+                    <p>Domingo: Encerrado</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 YAHWEH EMPREEDIMENTOS,LDA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Dados dos Produtos para a página de preços (incluindo descrições e imagens para a modal)
-            const productsData = [
-                {
-                    id: 'bases-mesa',
-                    name: 'Bases de Mesa',
-                    description: 'Nossas bases de mesa são cuidadosamente confeccionadas para adicionar um toque de elegância e funcionalidade à sua decoração. Disponíveis em diversos materiais como algodão, linho e misturas sintéticas, oferecem durabilidade e fácil manutenção. Perfeitas para uso diário ou eventos especiais, protegendo sua mesa com estilo.',
-                    images: ['images/bases_mesa/base_mesa01.jpg', 'images/bases_mesa/base_mesa02.jpg', 'images/bases_mesa/base_mesa03.jpg']
-                },
-                {
-                    id: 'toalhas-diversas',
-                    name: 'Toalhas (Diversas)',
-                    description: 'Oferecemos uma vasta gama de toalhas de alta qualidade para banho, rosto e lavabo. Feitas com algodão 100% puro, garantem máxima absorção e maciez. Disponíveis em diversas cores e tamanhos para atender às suas necessidades de conforto e estilo no dia a dia.',
-                    images: ['images/toalha/toalha1.png', 'images/toalha/toalha02.png', 'images/toalha/toalha03.png']
-                },
-                {
-                    id: 'cortinas',
-                    name: 'Cortinas',
-                    description: 'Nossas cortinas são a solução perfeita para controlar a luz, garantir privacidade e complementar a decoração de qualquer ambiente. Com uma seleção de tecidos que variam de leves e translúcidos a densos e blackout, e uma paleta de cores vasta, você encontrará a opção ideal para seu lar ou escritório.',
-                    images: ['images/cortinas/cortina01.jpg', 'images/cortinas/cortina02.jpg', 'images/cortinas/cortina03.jpg']
-                },
-                {
-                    id: 'fatos-safari',
-                    name: 'Fatos Safari',
-                    description: 'Desenvolvidos para oferecer o máximo conforto e durabilidade, nossos fatos safari são ideais para aventuras ao ar livre, trabalho em campo ou simplesmente para um estilo casual e robusto. Confeccionados com tecidos resistentes e respiráveis, possuem múltiplos bolsos e um design funcional.',
-                    images: ['images/fato_safari/safari01.jpg', 'images/fato_safari/safari02.jpg', 'images/fato_safari/safari03.jpg']
-                },
-                {
-                    id: 'fatos-sociais',
-                    name: 'Fatos Sociais',
-                    description: 'Para ocasiões que exigem elegância e sofisticação, nossos fatos sociais são a escolha perfeita. Com cortes modernos e tecidos de alta qualidade, garantem um caimento impecável e um visual distinto. Disponíveis em diversas cores e estilos para atender a todos os gostos e eventos.',
-                    images: ['images/fato/Fato.png', 'images/fato/fato01.png', 'images/fato/fato02.png', 'images/fato/fato03.png']
-                },
-                {
-                    id: 'camisas',
-                    name: 'Camisas',
-                    description: 'Nossa coleção de camisas oferece opções versáteis para qualquer ocasião, do casual ao formal. Confeccionadas com tecidos premium que garantem conforto e durabilidade, nossos modelos apresentam cortes modernos e acabamento impecável. Encontre a camisa perfeita para o seu estilo.',
-                    images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
-                }
-            ];
-
-            // Referências aos elementos da modal de preços
-            const priceProductModal = document.getElementById('priceProductModal');
-            const priceModalImage = document.getElementById('priceModalImage');
-            const priceModalName = document.getElementById('priceModalName');
-            const priceModalDescription = document.getElementById('priceModalDescription');
-            const priceModalCloseButton = document.querySelector('.price-modal-close-button');
-
-            // --- Lógica da Modal de Detalhes do Produto ---
-
-            /**
-             * Abre a modal de detalhes do produto na página de preços.
-             * @param {string} productId - O ID do produto a ser exibido.
-             */
-            function openPriceProductModal(productId) {
-                const product = productsData.find(p => p.id === productId);
-
-                if (product) {
-                    priceModalImage.src = product.images[0]; // Exibe a primeira imagem do produto
-                    priceModalImage.alt = product.name;
-                    priceModalName.textContent = product.name;
-                    priceModalDescription.textContent = product.description;
-                    priceProductModal.style.display = 'flex'; // Exibe a modal
-                    document.body.style.overflow = 'hidden'; // Impede o scroll do corpo da página
-                }
+        document.addEventListener('DOMContentLoaded', function() {
+    // Menu Mobile
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links li');
+    
+    // Função para abrir/fechar o menu
+    function toggleMenu() {
+        // Alternar classe 'nav-active' no menu
+        navLinks.classList.toggle('nav-active');
+        
+        // Animar os itens do menu
+        navItems.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
-
-            // Adiciona evento de clique a cada linha da tabela para abrir a modal
-            const productRows = document.querySelectorAll('.price-table tbody tr');
-            productRows.forEach(row => {
-                row.addEventListener('click', () => {
-                    const productId = row.dataset.productId;
-                    if (productId) {
-                        openPriceProductModal(productId);
-                    }
-                });
-            });
-
-            // Fecha a modal de detalhes do produto
-            priceModalCloseButton.addEventListener('click', () => {
-                priceProductModal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Reabilita o scroll do corpo da página
-            });
-
-            // Fecha a modal clicando fora dela
-            window.addEventListener('click', (event) => {
-                if (event.target === priceProductModal) {
-                    priceProductModal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // --- Lógica do Menu Hambúrguer (copiada do script.js para garantir que funcione nesta página) ---
-            const navBurger = document.querySelector('.burger');
-            const navLinks = document.querySelector('.nav-links');
-            const navIndividualLinks = document.querySelectorAll('.nav-links li');
-
-            navBurger.addEventListener('click', () => {
-                navLinks.classList.toggle('nav-active');
-                navIndividualLinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                    } else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                    }
-                });
-                navBurger.classList.toggle('toggle');
-            });
-
-            // Fechar menu hambúrguer ao clicar em um link
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('nav-active')) {
-                        navLinks.classList.remove('nav-active');
-                        navBurger.classList.remove('toggle');
-                        navIndividualLinks.forEach(item => item.style.animation = '');
-                    }
-                });
-            });
-
-            // --- Animação de seção ao scroll (para a seção de preços e serviços) ---
-            const sections = document.querySelectorAll('section'); // Seleciona todas as seções
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
         });
+        
+        // Animar o botão do menu (transformar em X)
+        burger.classList.toggle('toggle');
+        
+        // Bloquear/desbloquear scroll da página quando menu está aberto
+        document.body.style.overflow = navLinks.classList.contains('nav-active') ? 'hidden' : 'auto';
+    }
+    
+    // Evento de clique no botão do menu
+    burger.addEventListener('click', toggleMenu);
+    
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('nav-active')) {
+                toggleMenu();
+            }
+        });
+    });
+    
+    // Observador de Intersecção para animações das seções
+    const sections = document.querySelectorAll('section');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Dados dos Produtos para o Modal
+    const productsData = {
+        // Bases de Mesa
+        'bases-mesa': {
+            name: 'Bases de Mesa Decorativas',
+            category: 'Decoração & Utilitário',
+            description: 'Nossas bases de mesa são cuidadosamente confeccionadas para adicionar um toque de elegância e funcionalidade à sua decoração. Disponíveis em diversos materiais como algodão, linho e misturas sintéticas de alta qualidade, oferecem durabilidade e fácil manutenção. Perfeitas para uso diário ou eventos especiais, protegendo sua mesa com estilo e sofisticação.',
+            dimensions: 'Vários tamanhos disponíveis: Pequena (40x60cm), Média (60x90cm), Grande (80x120cm)',
+            colors: 'Branco, Bege, Cinza, Azul-marinho, Verde-oliva, Vermelho vinho e padrões africanos',
+            materials: 'Algodão 100%, Linho, Poliéster resistente ou misturas',
+            care: 'Lavável na máquina a 30°C. Não usar alvejante. Passar a ferro em temperatura média.',
+            availability: 'Pronta entrega em 2-3 dias úteis. Personalização disponível com 1 semana de produção.',
+            price: 'A partir de 27.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Toalha de Banho
+        'toalhas-banho': {
+            name: 'Toalha de Banho Premium',
+            category: 'Tamanho Grande (70x140cm)',
+            description: 'Nossa toalha de banho em algodão egípcio 100% oferece uma experiência de luxo a cada uso. Com fios longos e macios, proporciona absorção excepcional enquanto mantém sua suavidade mesmo após múltiplas lavagens. O acabamento especial nas bordas garante durabilidade prolongada, resistente a desgastes. Ideal para quem busca conforto e qualidade superior no dia-a-dia.',
+            dimensions: '70cm x 140cm (tamanho grande)',
+            colors: 'Branco, Azul-celeste, Cinza, Rosa, Verde-menta, Amarelo-pálido e Azul-marinho',
+            materials: '100% Algodão Egípcio de alta qualidade (600g/m²)',
+            care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra. Passar a ferro em temperatura média.',
+            availability: 'Disponível em stock em todas as cores. Encomendas personalizadas (monogramas) com 5 dias úteis.',
+            price: '37.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Toalha de Rosto
+        'toalhas-rosto': {
+            name: 'Toalha de Rosto',
+            category: 'Tamanho Médio (50x90cm)',
+            description: 'Toalha facial em algodão puro de alta qualidade, perfeita para cuidados diários. Com absorção rápida e textura suave que não irrita a pele, é ideal para toda a família. O design sem costuras nas laterais garante maior durabilidade e um acabamento elegante. Disponíveis em cores sólidas e discretas para combinar com qualquer decoração de casa de banho.',
+            dimensions: '50cm x 90cm (tamanho médio)',
+            colors: 'Branco, Azul-claro, Cinza-claro, Rosa-pálido, Verde-claro e Amarelo-claro',
+            materials: '100% Algodão (400g/m²)',
+            care: 'Lavar a 40°C. Pode ser alvejada (cloro). Secar ao ar livre. Passar a ferro quente.',
+            availability: 'Disponível imediatamente. Conjuntos de 2 ou 4 unidades com desconto.',
+            price: '25.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Toalha de Mão
+        'toalhas-mao': {
+            name: 'Toalha de Mão',
+            category: 'Tamanho Pequeno (30x50cm)',
+            description: 'Toalha para mãos em algodão absorvente, perfeita para lavabos e casas de banho. Tamanho prático que combina funcionalidade e estilo. Com barra reforçada para maior durabilidade e resistência ao uso frequente. Ideal para visitas ou uso diário, mantendo sempre as mãos secas e protegidas.',
+            dimensions: '30cm x 50cm (tamanho pequeno)',
+            colors: 'Branco, Azul, Cinza, Rosa, Verde e Amarelo',
+            materials: '100% Algodão (350g/m²)',
+            care: 'Lavar a 40°C. Pode ser alvejada. Secar à sombra. Passar a ferro quente.',
+            availability: 'Stock disponível em todas as cores. Conjuntos de 6 unidades com desconto especial.',
+            price: '18.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Cortinas
+        'cortinas': {
+            name: 'Cortinas Sob Medida',
+            category: 'Decoração de Interiores',
+            description: 'Cortinas personalizadas confeccionadas sob medida para o seu espaço. Oferecemos uma ampla seleção de tecidos que variam de leves e translúcidos a densos e blackout, garantindo privacidade e controle de luz conforme sua necessidade. Trabalhamos com diversos estilos - modernos, clássicos ou tradicionais - para complementar perfeitamente sua decoração.',
+            dimensions: 'Feitas sob medida conforme suas necessidades',
+            colors: 'Centenas de cores e padrões disponíveis, incluindo estampas africanas',
+            materials: 'Variados: Algodão, Linho, Poliéster, Veludo, Seda sintética, Blackout',
+            care: 'Depende do tecido. Fornecemos instruções específicas para cada material.',
+            availability: 'Medição gratuita no local. Tempo de produção: 7-14 dias úteis após aprovação.',
+            price: 'Sob consulta (depende do tecido e tamanho)',
+            images: [
+                'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Fatos Safari
+        'fatos-safari': {
+            name: 'Fato Safari Completo',
+            category: 'Vestuário Masculino',
+            description: 'Nosso fato safari é desenvolvido para oferecer o máximo conforto e durabilidade em actividades ao ar livre. Confeccionado com tecido resistente e respirável, possui múltiplos bolsos funcionais e um design que combina robustez com estilo. Ideal para caça, safaris, trabalho de campo ou simplesmente para um visual casual e sofisticado. Disponível em cores tradicionais e modernas.',
+            dimensions: 'Tamanhos disponíveis: S (46), M (48-50), L (52-54), XL (56-58), XXL (60-62)',
+            colors: 'Bege, Verde-oliva, Caqui, Azul-marinho, Cinza e Camuflado',
+            materials: 'Tecido misto algodão-poliéster resistente (65/35)',
+            care: 'Lavar a 30°C. Não usar alvejante. Passar a ferro em temperatura média. Secar à sombra.',
+            availability: 'Pronta entrega em 3-5 dias úteis. Ajustes personalizados disponíveis.',
+            price: '97.000,00 AOA (conjunto completo)',
+            images: [
+                'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Fatos Sociais
+        'fatos-sociais': {
+            name: 'Fato Social Elegante',
+            category: 'Vestuário Formal Masculino',
+            description: 'Para ocasiões que exigem elegância e sofisticação, nosso fato social é a escolha perfeita. Com cortes modernos e tecidos de alta qualidade (incluindo lã e misturas premium), garantimos um caimento impecável e um visual distinto. Confeccionado com atenção aos detalhes - forros internos, acabamentos e botões de qualidade. Ideal para casamentos, eventos formais ou uso profissional executivo.',
+            dimensions: 'Tamanhos disponíveis: S (46), M (48-50), L (52-54), XL (56-58), XXL (60-62)',
+            colors: 'Preto, Azul-marinho, Cinza-escuro, Grafite, Azul-carvão e Listrados',
+            materials: 'Lã 100%, Misturas de lã (70/30 ou 80/20) ou Poliéster premium',
+            care: 'Lavagem a seco recomendada. Passar a vapor. Guardar em cabide adequado.',
+            availability: 'Encomenda com 10-15 dias úteis. Ajustes personalizados incluídos.',
+            price: '187.000,00 AOA (conjunto completo)',
+            images: [
+                'https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Camisa Social
+        'camisas-sociais': {
+            name: 'Camisa Social de Colarinho',
+            category: 'Vestuário Formal',
+            description: 'Nossa camisa social de colarinho é essencial para qualquer guarda-roupa masculino. Confeccionada em algodão oxford de alta qualidade, oferece conforto durante todo o dia enquanto mantém um visual profissional e impecável. Disponível em cores clássicas e cortes modernos, perfeita para o escritório ou eventos formais. Detalhes como costura reforçada e botões de madrepérola garantem durabilidade.',
+            dimensions: 'Tamanhos disponíveis: S (38), M (40), L (42), XL (44), XXL (46)',
+            colors: 'Branco, Azul-claro, Rosa-pó, Cinza-claro, Listrado azul/branco',
+            materials: '100% Algodão Oxford (140-160g/m²)',
+            care: 'Lavar a 40°C. Pode ser alvejada (branca). Passar a ferro quente.',
+            availability: 'Pronta entrega em 2-3 dias úteis. Monogramas disponíveis.',
+            price: '45.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Camisa Casual
+        'camisas-casual': {
+            name: 'Camisa Casual',
+            category: 'Vestuário Dia-a-Dia',
+            description: 'Camisa confortável para uso diário, em algodão 100% de alta qualidade. Modelo descontraído com corte moderno que combina com qualquer ocasião informal. Disponível em cores sólidas e padrões discretos, perfeita para combinar com calças jeans ou chinos. Bolsos funcionais e costura reforçada garantem durabilidade e praticidade.',
+            dimensions: 'Tamanhos disponíveis: S (38), M (40), L (42), XL (44), XXL (46)',
+            colors: 'Azul, Vermelho, Verde, Amarelo, Cinza, Xadrez e Listrado',
+            materials: '100% Algodão (120-140g/m²)',
+            care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra. Passar a ferro médio.',
+            availability: 'Disponível imediatamente em todas as cores e tamanhos.',
+            price: '35.000,00 AOA',
+            images: [
+                'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        },
+        // Camisa Polo
+        'camisas-polo': {
+            name: 'Camisa Polo Clássica',
+            category: 'Vestuário Casual Elegante',
+            description: 'Nossa camisa polo em algodão piquet de alta qualidade é a peça ideal para um visual casual mas elegante. Colarinho reforçado que mantém o formato mesmo após múltiplas lavagens, com acabamento impecável nas costuras. Disponível em cores clássicas e vibrantes, perfeita para o dia-a-dia ou ocasiões informais que exigem um toque de sofisticação.',
+            dimensions: 'Tamanhos disponíveis: S (38), M (40), L (42), XL (44), XXL (46)',
+            colors: 'Branco, Preto, Azul-marinho, Vermelho, Verde, Amarelo e Listrado',
+            materials: '100% Algodão Piquet (180-200g/m²)',
+            care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra. Passar a ferro em temperatura média.',
+            availability: 'Pronta entrega em 1-2 dias úteis. Personalização disponível.',
+            price: '32.000,00 AOA',
+            images: [
+                'https://img.freepik.com/free-photo/white-polo-shirt-men-s-casual-attire-menswear_53876-119735.jpg?t=st=1752579406~exp=1752583006~hmac=b01b3a95b9416cabe10b6278abd387c774ee9067eed3089e36c69e5c2974ff51&w=996',
+                'https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                'https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+            ]
+        }
+    };
+    
+    // Modal de Produto
+    const modal = document.getElementById('productModal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalProductName = document.getElementById('modalProductName');
+    const modalProductCategory = document.getElementById('modalProductCategory');
+    const modalProductDescription = document.getElementById('modalProductDescription');
+    const modalDimensions = document.getElementById('modalDimensions');
+    const modalColors = document.getElementById('modalColors');
+    const modalMaterials = document.getElementById('modalMaterials');
+    const modalCare = document.getElementById('modalCare');
+    const modalAvailability = document.getElementById('modalAvailability');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalMainImage = document.getElementById('modalMainImage');
+    const thumbnailContainer = document.getElementById('thumbnailContainer');
+    
+    // Abrir modal ao clicar em um produto
+    document.querySelectorAll('[data-product-id]').forEach(element => {
+        element.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            const productData = productsData[productId];
+            
+            if (productData) {
+                // Preencher dados do modal
+                modalProductName.textContent = productData.name;
+                modalProductCategory.textContent = productData.category;
+                modalProductDescription.textContent = productData.description;
+                modalDimensions.textContent = productData.dimensions;
+                modalColors.textContent = productData.colors;
+                modalMaterials.textContent = productData.materials;
+                modalCare.textContent = productData.care;
+                modalAvailability.textContent = productData.availability;
+                modalPrice.textContent = productData.price;
+                
+                // Configurar imagens
+                modalMainImage.src = productData.images[0];
+                modalMainImage.alt = productData.name;
+                
+                // Limpar thumbnails anteriores
+                thumbnailContainer.innerHTML = '';
+                
+                // Adicionar thumbnails
+                productData.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = image;
+                    thumbnail.alt = `${productData.name} - Foto ${index + 1}`;
+                    thumbnail.className = 'thumbnail protected-image';
+                    
+                    if (index === 0) {
+                        thumbnail.classList.add('active');
+                    }
+                    
+                    thumbnail.addEventListener('click', function() {
+                        modalMainImage.src = this.src;
+                        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                    
+                    thumbnailContainer.appendChild(thumbnail);
+                });
+                
+                // Mostrar modal
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // Fechar modal
+    modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Proteção de Imagens
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.classList.contains('protected-image')) {
+            e.preventDefault();
+            showCopyMessage();
+        }
+    }, false);
+    
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+            const selection = window.getSelection();
+            if (selection.toString().length > 0) {
+                showCopyMessage();
+            }
+        }
+    });
+    
+    function showCopyMessage() {
+        document.body.classList.add('copied');
+        setTimeout(() => {
+            document.body.classList.remove('copied');
+        }, 3000);
+    }
+    
+    // Desabilitar arrastar imagens protegidas
+    document.querySelectorAll('.protected-image').forEach(img => {
+        img.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+    });
+});
     </script>
 </body>
 </html>
