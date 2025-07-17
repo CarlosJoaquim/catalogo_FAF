@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'uniforme-selecao',
             name: 'Equipamento de Treino - Seleção',
             category: 'uniformes',
-            description: 'Equipamentos de treino com design exclusivo para as seleções da FAF, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e Modelos.',
+            description: 'Equipamentos de treino com design exclusivo, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e Modelos.',
             images: ['images/fato_treino04.png', 'images/fato_treino03.png', 'images/fato_treino05.png']
         },
         {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 'vestuario-cerimonial',
-            name: 'Camisa - Angola',
+            name: 'Camisolas - Angola',
             category: 'camisolas',
             description: 'Camisolas elegantes para eventos cerimoniais ou uso casual, incorporando elementos da marca Angola. Confortáveis, com corte moderno e acabamento impecável. Perfeitas para representar o espírito angolano com estilo.',
             images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
