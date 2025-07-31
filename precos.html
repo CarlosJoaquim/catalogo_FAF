@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tabela de preços completa e lista detalhada de produtos e serviços da YHAWEH EMPREEDIMENTO,LDA: bordados, personalização, brindes, restauração de interiores.">
-    <meta name="keywords" content="preços Angola, produtos personalizados, bordados Luanda, fatos safari, toalhas de banho, cortinas sob medida, restauração de móveis, brindes corporativos">
-    <meta name="author" content="YHAWEH EMPREEDIMENTO,LDA">
+    <meta name="description" content="Tabela de preços completa e lista detalhada de produtos e serviços da YAHWEH EMPREEDIMENTOS,LDA: bordados, personalização, brindes, restauração de interiores.">
+    <meta name="keywords" content="preços Angola, produtos personalizados, bordados Luanda, fatos safari, toalhas de banho, cortinas sob medida, restauração de móveis, brindes corporativos, YAHWEH EMPREEDIMENTOS LDA">
+    <meta name="author" content="YAHWEH EMPREEDIMENTOS,LDA">
 
-    <title>Preços e Serviços Detalhados - YHAWEH EMPREEDIMENTO,LDA</title>
+    <title>Preços e Serviços Detalhados - YAHWEH EMPREEDIMENTOS,LDA</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,23 +15,16 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
     <style>
         /* ---------------------------------
         CSS MELHORADO E REORGANIZADO
-        ---------------------------------
-        - Adicionada animação para o menu hambúrguer (transformação em 'X').
-        - Otimizada a lógica do menu mobile para uma melhor performance e UX.
-        - Refinada a proteção de imagens para não afetar a seleção de texto no resto da página.
-        - Adicionado bloqueio de scroll no body quando o menu está aberto via CSS.
-        */
-        
+        --------------------------------- */
+
         /* --- Cores Globais --- */
         :root {
             --primary-color: #1A1A1A; /* Preto/Carvão */
             --secondary-color: #F39C12; /* Laranja Vibrante */
-            --accent-color: #8E44AD; /* Roxo para destaques */
+            --accent-color: #8E44AD; /* Roxo para destaques (not currently used much, but available) */
             --text-dark: #222222;
             --text-medium: #444444;
             --text-light: #E0E0E0;
@@ -43,7 +36,7 @@
         /* --- Estilos Gerais --- */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Altura do header */
+            scroll-padding-top: 70px; /* Header height */
         }
 
         body {
@@ -52,10 +45,13 @@
             color: var(--text-dark);
             background-color: var(--bg-light);
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        /* Bloqueia o scroll vertical quando o menu mobile está aberto */
-        body.nav-open {
+        /* Blocks vertical scroll when mobile menu or modal is open */
+        body.nav-open, body.modal-open {
             overflow-y: hidden;
         }
 
@@ -77,7 +73,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 30px;
             text-align: center;
@@ -88,7 +84,7 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
             height: 3px;
             background-color: var(--secondary-color);
             margin: 15px auto 0;
@@ -103,7 +99,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            height: 70px; /* Altura fixa para cálculo de posicionamento */
+            height: 70px; /* Fixed height for positioning calculations */
         }
 
         .nav-container {
@@ -114,10 +110,11 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: bold;
             color: var(--secondary-color);
             font-family: 'Raleway', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -125,7 +122,7 @@
         }
 
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 30px;
             position: relative;
         }
 
@@ -135,6 +132,7 @@
             transition: color 0.3s ease;
             font-size: 1rem;
             padding: 5px 0;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
@@ -152,7 +150,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active-link::after { /* Added active-link class */
             width: 100%;
         }
 
@@ -162,21 +161,21 @@
             cursor: pointer;
             flex-direction: column;
             justify-content: space-around;
-            width: 25px;
-            height: 21px; /* Altura ajustada para alinhamento */
+            width: 28px;
+            height: 22px;
             z-index: 1001;
-            -webkit-tap-highlight-color: transparent; /* Remove flash azul no toque em mobile */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .burger div {
-            width: 25px;
-            height: 2px;
+            width: 100%;
+            height: 3px;
             background-color: var(--white);
             border-radius: 5px;
             transition: all 0.3s ease;
         }
 
-        /* Animação do Burger para 'X' */
+        /* Burger Animation to 'X' */
         .burger.toggle .line1 {
             transform: rotate(-45deg) translate(-5px, 6px);
         }
@@ -187,11 +186,11 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
         
-        /* --- Seções --- */
+        /* --- Sections --- */
         section {
-            padding: 60px 0;
+            padding: 80px 0;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
@@ -200,7 +199,7 @@
             transform: translateY(0);
         }
 
-        /* --- Tabela de Preços --- */
+        /* --- Price List Section --- */
         .price-list-section {
             background-color: var(--white);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -208,33 +207,49 @@
 
         .price-table-container {
             overflow-x: auto;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border: 1px solid var(--bg-lighter);
         }
 
         .price-table {
             width: 100%;
-            border-collapse: collapse;
-            min-width: 700px;
+            border-collapse: separate; /* For rounded corners on first/last row */
+            border-spacing: 0; /* Remove default spacing */
+            min-width: 750px; /* Minimum width for table scroll */
         }
 
         .price-table th,
         .price-table td {
-            padding: 15px 12px;
+            padding: 18px 15px;
             border-bottom: 1px solid #eee;
             text-align: left;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             vertical-align: middle;
         }
+
+        .price-table thead th:first-child {
+            border-top-left-radius: 10px;
+        }
+        .price-table thead th:last-child {
+            border-top-right-radius: 10px;
+        }
+        .price-table tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        .price-table tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+
 
         .price-table th {
             background-color: var(--primary-color);
             color: var(--secondary-color);
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         .price-table tr {
@@ -246,38 +261,39 @@
         }
 
         .price-table td:last-child {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-color);
             text-align: right;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
         }
 
         .product-cell {
             display: flex;
             align-items: center;
             cursor: pointer;
+            gap: 15px;
         }
 
         .product-image {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
-            border-radius: 4px;
-            margin-right: 15px;
-            border: 1px solid #eee;
-            transition: transform 0.3s ease;
+            border-radius: 6px;
+            border: 1px solid var(--bg-lighter);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: #f5f5f5;
         }
 
         .product-cell:hover .product-image {
-            transform: scale(1.08);
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
         }
 
         .product-name {
             font-weight: 600;
             color: var(--primary-color);
             transition: color 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .product-cell:hover .product-name {
@@ -286,50 +302,58 @@
 
         .product-category {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-medium);
-            margin-top: 3px;
+            margin-top: 5px;
+            line-height: 1.3;
         }
 
         .disclaimer {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-medium);
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 20px;
             background-color: var(--bg-lighter);
-            border-radius: 8px;
-            line-height: 1.5;
+            border-radius: 10px;
+            line-height: 1.6;
+            border: 1px solid #e0e0e0;
         }
         
-        /* --- Seção de Serviços --- */
+        /* --- Services Section --- */
         .services-section {
-            background-color: var(--white);
+            background-color: var(--bg-lighter);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .service-image-container {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .service-image {
@@ -340,69 +364,72 @@
         }
 
         .service-card:hover .service-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .service-content {
-            padding: 20px;
+            padding: 25px;
+            flex-grow: 1; /* Allows content to expand and align bottom */
+            display: flex;
+            flex-direction: column;
         }
 
         .service-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .service-icon {
             color: var(--secondary-color);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
         .service-description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-medium);
-            line-height: 1.6;
-            margin-bottom: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Allows description to take up available space */
         }
 
         .service-features {
-            margin-bottom: 15px;
+            margin-top: auto; /* Pushes features to the bottom */
         }
 
         .service-features li {
             position: relative;
-            padding-left: 22px;
-            margin-bottom: 8px;
+            padding-left: 25px;
+            margin-bottom: 10px;
             color: var(--text-medium);
-            font-size: 0.85rem;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         .service-features li::before {
-            content: '\f00c';
+            content: '\f00c'; /* Checkmark icon */
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
             top: 2px;
             color: var(--secondary-color);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
 
-        /* --- Modal de Detalhes --- */
+        /* --- Product Detail Modal --- */
         .product-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.85); /* Mais escuro */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0,0,0,0.9); /* Darker overlay */
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
@@ -410,24 +437,23 @@
 
         .modal-content {
             background-color: var(--white);
-            margin: auto;
-            padding: 25px;
-            border-radius: 8px;
-            max-width: 800px;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 900px; /* Increased max-width */
             width: 90%;
             position: relative;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
             max-height: 90vh;
             overflow-y: auto;
-            animation: slideInUp 0.4s ease;
+            animation: slideInUp 0.4s ease-out;
         }
 
         .modal-close {
             position: absolute;
-            top: 10px;
-            right: 15px;
+            top: 15px;
+            right: 20px;
             color: var(--text-medium);
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease, transform 0.3s ease;
@@ -435,22 +461,23 @@
 
         .modal-close:hover {
             color: var(--primary-color);
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .modal-header {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
         .modal-title {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-family: 'Raleway', sans-serif;
         }
 
         .modal-subtitle {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--secondary-color);
             font-weight: 500;
         }
@@ -458,137 +485,138 @@
         .modal-body {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
         }
 
         .modal-gallery {
             flex: 1;
-            min-width: 280px;
+            min-width: 320px;
         }
 
         .main-image-container {
-            height: 300px;
+            height: 350px;
             overflow: hidden;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             background-color: var(--bg-lighter);
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 1px solid #e5e5e5;
         }
 
         .main-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            display: block;
         }
 
         .thumbnail-container {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             overflow-x: auto;
-            padding-bottom: 5px;
+            padding-bottom: 5px; /* Space for potential scrollbar */
+            justify-content: flex-start;
         }
 
         .thumbnail {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
+            width: 70px;
+            height: 70px;
+            border-radius: 6px;
             object-fit: cover;
             cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.3s ease;
             background-color: var(--bg-lighter);
-            flex-shrink: 0;
+            flex-shrink: 0; /* Prevent shrinking in flex container */
         }
 
         .thumbnail:hover, .thumbnail.active {
             border-color: var(--secondary-color);
-        }
-
-        .thumbnail.active {
-            transform: scale(1.08);
-            box-shadow: 0 0 5px var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(243, 156, 18, 0.4);
         }
 
         .modal-details {
-            flex: 1.2;
-            min-width: 280px;
+            flex: 1.5; /* Takes more space than gallery */
+            min-width: 320px;
         }
 
         .modal-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--text-medium);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .modal-features {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .feature-item {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .feature-title {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1rem;
+            gap: 10px;
+            font-size: 1.05rem;
         }
 
         .feature-icon {
             color: var(--secondary-color);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .feature-value {
             color: var(--text-medium);
-            padding-left: 24px;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            padding-left: 30px; /* Indent value */
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .modal-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--secondary-color);
             font-weight: 700;
             text-align: right;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .price-note {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-medium);
             text-align: right;
-            margin-top: 3px;
+            margin-top: 5px;
         }
 
         /* --- Footer --- */
         footer {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 40px 0 20px;
+            padding: 50px 0 30px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-column h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--secondary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-family: 'Raleway', sans-serif;
             position: relative;
-            padding-bottom: 5px;
+            padding-bottom: 8px;
+            letter-spacing: 0.5px;
         }
         
         .footer-column h3::after {
@@ -596,63 +624,66 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 30px;
-            height: 2px;
+            width: 40px;
+            height: 3px;
             background-color: var(--secondary-color);
         }
 
         .footer-column p, 
         .footer-column a {
             color: var(--text-light);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .footer-column p i {
-            margin-right: 8px;
+            margin-right: 10px;
             color: var(--secondary-color);
+            font-size: 1rem;
         }
 
         .footer-column a:hover {
             color: var(--secondary-color);
-            padding-left: 5px;
+            padding-left: 8px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.15);
             display: flex;
             justify-content: center;
             align-items: center;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            color: var(--white);
         }
 
         .social-links a:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.1);
             color: var(--primary-color);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-light);
         }
 
-        /* --- Animações --- */
+        /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -660,7 +691,7 @@
 
         @keyframes slideInUp {
             from { 
-                transform: translateY(30px);
+                transform: translateY(50px);
                 opacity: 0;
             }
             to { 
@@ -669,60 +700,66 @@
             }
         }
 
-        /* --- Proteção de Imagens e Mensagem de Cópia --- */
+        /* --- Image Protection & Copy Message --- */
         .protected-image {
-            pointer-events: none;
+            user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none;
+            pointer-events: none; /* Disables click/drag, but still allows right-click context menu in some browsers */
         }
 
-        /* Mensagem quando tentam copiar */
+        /* Message when trying to copy */
         body::after {
-            content: 'Imagens protegidas por direitos autorais - YHAWEH EMPREEDIMENTO,LDA';
+            content: 'Imagens e conteúdo protegidos por direitos autorais - YAHWEH EMPREEDIMENTOS,LDA';
             position: fixed;
-            bottom: -60px; /* Inicia fora da tela */
+            bottom: -80px; /* Starts off-screen */
             left: 50%;
             transform: translateX(-50%);
             background-color: var(--primary-color);
             color: var(--white);
             text-align: center;
-            padding: 10px 20px;
-            font-size: 0.8rem;
+            padding: 12px 25px;
+            font-size: 0.9rem;
             transition: bottom 0.4s ease;
             z-index: 3000;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            max-width: 95%;
+            box-sizing: border-box;
         }
 
         body.copied::after {
-            bottom: 20px; /* Sobe para uma posição visível */
+            bottom: 30px; /* Moves into visible position */
         }
 
         /* ----------------------------
-        MEDIA QUERIES (Responsividade)
-        ----------------------------
-        */
+        MEDIA QUERIES (Responsiveness)
+        ---------------------------- */
         
         @media (max-width: 992px) {
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             .main-image-container {
-                height: 250px;
+                height: 300px;
+            }
+            .modal-content {
+                max-width: 700px;
+            }
+            .footer-column {
+                padding: 0 10px; /* Add some padding for columns on smaller screens */
             }
         }
 
         @media (max-width: 768px) {
             .section-title {
-                font-size: 1.7rem;
+                font-size: 2rem;
                 margin-bottom: 25px;
             }
             
             section {
-                padding: 50px 0;
+                padding: 60px 0;
             }
             
             .burger {
@@ -731,19 +768,19 @@
 
             .nav-links {
                 position: fixed;
-                top: 70px; /* Altura do header */
-                left: -100%; /* Começa fora da tela */
-                width: 85%;
-                max-width: 320px;
+                top: 70px; /* Header height */
+                left: -100%; /* Starts off-screen */
+                width: 80%; /* Slightly narrower menu */
+                max-width: 350px; /* Max width for consistency */
                 height: calc(100vh - 70px);
                 background-color: var(--primary-color);
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 40px;
+                padding-top: 50px; /* More space from top */
                 transition: left 0.4s ease-in-out;
                 z-index: 999;
-                box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+                box-shadow: 5px 0 20px rgba(0,0,0,0.3);
             }
             
             .nav-links.active {
@@ -751,26 +788,26 @@
             }
             
             .nav-links li {
-                margin: 15px 0;
+                margin: 20px 0; /* Increased vertical spacing */
                 width: 100%;
                 text-align: center;
                 opacity: 0;
             }
             
             .nav-links a {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 display: block;
                 width: 100%;
-                padding: 10px 0;
+                padding: 12px 0;
             }
 
             .nav-links a:hover {
                 background-color: rgba(255,255,255,0.1);
             }
             
-            /* Animação dos links quando o menu abre */
+            /* Animation of links when menu opens */
             .nav-links.active li {
-                animation: fadeIn 0.5s ease forwards;
+                animation: fadeIn 0.6s ease forwards;
             }
             .nav-links.active li:nth-child(1) { animation-delay: 0.2s; }
             .nav-links.active li:nth-child(2) { animation-delay: 0.3s; }
@@ -781,39 +818,85 @@
                 flex-direction: column;
             }
             .main-image-container {
-                height: 220px;
+                height: 280px;
             }
             .modal-content {
-                padding: 20px;
+                padding: 25px;
+                width: 95%;
+            }
+            .modal-title {
+                font-size: 1.9rem;
+            }
+            .modal-subtitle {
+                font-size: 1rem;
+            }
+            .modal-price {
+                font-size: 1.6rem;
+            }
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
 
         @media (max-width: 576px) {
             .logo {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             .section-title {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+            .price-table th,
+            .price-table td {
+                padding: 15px 10px;
+                font-size: 0.9rem;
             }
             .product-image {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
+            }
+            .product-name {
+                font-size: 0.9rem;
+            }
+            .product-category {
+                font-size: 0.75rem;
             }
             .services-grid {
                 grid-template-columns: 1fr;
             }
             .main-image-container {
-                height: 200px;
+                height: 240px;
             }
             .modal-content {
-                padding: 15px;
-                width: 95%;
+                padding: 20px;
             }
             .modal-title {
+                font-size: 1.6rem;
+            }
+            .modal-description, .feature-value {
+                font-size: 0.9rem;
+            }
+            .modal-price {
                 font-size: 1.4rem;
             }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .footer-column {
+                text-align: center;
+            }
+            .footer-column h3::after {
+                margin: 0 auto;
+                left: auto;
+                right: auto;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            body::after {
+                padding: 10px 15px;
+                font-size: 0.75rem;
+            }
         }
-
     </style>
 </head>
 <body>
@@ -823,7 +906,7 @@
             <nav>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="#price-list">Preços</a></li>
+                    <li><a href="#price-list" class="active-link">Preços</a></li>
                     <li><a href="#services">Serviços</a></li>
                     <li><a href="#footer-contact">Contacto</a></li>
                 </ul>
@@ -854,15 +937,15 @@
                             <tr data-product-id="bases-mesa">
                                 <td>
                                     <div class="product-cell">
-                                        <img src="images/base.jpg" class="product-image protected-image">
+                                        <img src="images/base.jpg" alt="Bases de Mesa" class="product-image protected-image">
                                         <div>
                                             <span class="product-name">Bases de Mesa</span>
                                             <span class="product-category">Decoração & Utilitário</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>Jogos Americanos</td>
-                                <td>Sob consulta..</td>
+                                <td>Jogos Americanos, duráveis e elegantes.</td>
+                                <td>Sob consulta</td>
                             </tr>
                             
                             <tr data-product-id="toalhas-banho">
@@ -875,13 +958,13 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Toalha de algodão 100% egípcio, alta absorção</td>
+                                <td>Toalha de algodão 100% egípcio, alta absorção e suavidade.</td>
                                 <td>37.000,00</td>
                             </tr>
-                             <tr data-product-id="toalha-mao">
+                            <tr data-product-id="toalha-mao">
                                 <td>
                                     <div class="product-cell">
-                                        <img src="https://bing.com/th/id/BCO.3e8d087d-da22-4b8c-82e0-575ba66a71f2.png" alt="Toalha de Mão" class="product-image">
+                                        <img src="https://bing.com/th/id/BCO.3e8d087d-da22-4b8c-82e0-575ba66a71f2.png" alt="Toalha de Mão" class="product-image protected-image">
                                         <div>
                                             <span class="product-name">Toalha de Mão Elegante</span>
                                             <span class="product-category">Tamanho Pequeno (30x50cm)</span>
@@ -902,7 +985,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Toalha facial em algodão puro, ideal para uso diário</td>
+                                <td>Toalha facial em algodão puro, ideal para uso diário.</td>
                                 <td>25.000,00</td>
                             </tr>
                             
@@ -916,7 +999,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Conjunto completo, tecido resistente para exterior</td>
+                                <td>Conjunto completo, tecido resistente para actividades ao ar livre.</td>
                                 <td>97.000,00</td>
                             </tr>
                             
@@ -930,11 +1013,11 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Fato completo para ocasiões formais, tecidos premium</td>
+                                <td>Fato completo para ocasiões formais, com tecidos premium.</td>
                                 <td>187.000,00</td>
                             </tr>
                             
-                             <tr data-product-id="camisas-polo">
+                            <tr data-product-id="camisas-polo">
                                 <td>
                                     <div class="product-cell">
                                         <img src="https://bing.com/th/id/BCO.e90098df-f8a6-4942-b6b1-321d12b80c27.png" alt="Camisa Polo" class="product-image protected-image">
@@ -944,7 +1027,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Polo em algodão piquet, ideal para look casual</td>
+                                <td>Polo em algodão piquet, ideal para um look casual e elegante.</td>
                                 <td>32.000,00</td>
                             </tr>
 
@@ -967,7 +1050,7 @@
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-image-container">
-                            <img src="images/bordado.jpg" class="service-image protected-image">
+                            <img src="images/bordado.jpg" alt="Bordados Personalizados" class="service-image protected-image">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">
@@ -1034,7 +1117,7 @@
 
     <div id="productModal" class="product-modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <span class="modal-close" aria-label="Fechar Modal">&times;</span>
             <div class="modal-header">
                 <h3 class="modal-title" id="modalProductName"></h3>
                 <p class="modal-subtitle" id="modalProductCategory"></p>
@@ -1099,7 +1182,7 @@
                 <div class="footer-column">
                     <h3>Redes Sociais</h3>
                     <p>Siga-nos para novidades e promoções.</p>
-                     <div class="social-links">
+                    <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -1113,214 +1196,225 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-    /* ---------------------------------
-    JAVASCRIPT REFINADO E OTIMIZADO
-    ---------------------------------
-    - Lógica do menu mobile simplificada e mais robusta.
-    - Utilização de classes no body para controlar o estado do menu (ex: bloqueio de scroll).
-    - Adicionado suporte a acessibilidade (ARIA) no script do menu.
-    - O resto do código (modal, animações de scroll) foi mantido pois já estava bem estruturado.
-    */
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- LÓGICA DO MENU MOBILE ---
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
-        const body = document.body;
-
-        const toggleMenu = () => {
-            const isExpanded = navLinks.classList.contains('active');
+        document.addEventListener('DOMContentLoaded', function() {
             
-            // Alterna as classes para as animações CSS
-            burger.classList.toggle('toggle');
-            navLinks.classList.toggle('active');
-            body.classList.toggle('nav-open');
-            
-            // Atualiza o atributo ARIA para acessibilidade
-            burger.setAttribute('aria-expanded', !isExpanded);
-        };
+            // --- MOBILE MENU LOGIC ---
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const body = document.body;
 
-        burger.addEventListener('click', toggleMenu);
-
-        // Fecha o menu ao clicar num link (para navegação na mesma página)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-        
-        // --- OBSERVER PARA ANIMAÇÃO DAS SEÇÕES AO SCROLL ---
-        const sections = document.querySelectorAll('section');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // --- DADOS E LÓGICA DO MODAL DE PRODUTOS ---
-        const productsData = {
-            'bases-mesa': {
-                name: 'Bases de Mesa ', category: 'Bases de Mesa', price: 'Entre 10.000 e 27.000 AOA',
-                description: 'São cuidadosamente confeccionadas para adicionar um toque de elegância à sua decoração. Disponíveis em diversos materiais, oferecem durabilidade e fácil manutenção.',
-                dimensions: 'Vários tamanhos: Pequena (40x60cm), Média (60x90cm), Grande (80x120cm)',
-                colors: 'Branco, Bege, Cinza, Azul-marinho, Verde-oliva, Vermelho e padrões africanos',
-                materials: 'Algodão 100%, Linho, Poliéster resistente',
-                care: 'Lavável na máquina a 30°C. Não usar alvejante.',
-                images: ['images/base.jpg', 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80']
-            },
-            'toalhas-banho': {
-                name: 'Toalha de Banho Premium', category: 'Tamanho Grande (70x140cm)', price: '37.000,00 AOA',
-                description: 'Toalha de banho em algodão egípcio 100% oferece uma experiência de luxo. Proporciona absorção excepcional enquanto mantém sua suavidade mesmo após múltiplas lavagens.',
-                dimensions: '70cm x 140cm (tamanho grande)',
-                colors: 'Branco, Azul-celeste, Cinza, Rosa, Verde-menta',
-                materials: '100% Algodão Egípcio (600g/m²)',
-                care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra.',
-                images: ['https://bing.com/th/id/BCO.c3d3ba6f-652d-4790-8156-771809038bff.png']
-            },
-           'toalha-mao': {
-            name: 'Toalha de Mão Elegante',
-            category: 'Tamanho Pequeno (30x50cm)',
-            price: '15.000,00 AOA',
-            description: 'Toalha para mãos em algodão absorvente, perfeita para lavabos e casas de banho. Tamanho prático que combina funcionalidade e estilo com acabamento delicado.',
-            dimensions: '30cm x 50cm (tamanho pequeno)',
-            colors: 'Branco, Marfim, Bege-claro, Azul-bebé',
-            materials: '100% Algodão (380g/m²)',
-            care: 'Lavar a 40°C. Secar à sombra. Passar a ferro morno.',
-            images: ['https://bing.com/th/id/BCO.3e8d087d-da22-4b8c-82e0-575ba66a71f2.png']
-        },
-
-            'toalhas-rosto': {
-                name: 'Toalha de Rosto', category: 'Tamanho Médio (50x90cm)', price: '25.000,00 AOA',
-                description: 'Toalha facial em algodão puro, perfeita para cuidados diários. Com absorção rápida e textura suave que não irrita a pele.',
-                dimensions: '50cm x 90cm (tamanho médio)',
-                colors: 'Branco, Azul-claro, Cinza-claro, Rosa-pálido',
-                materials: '100% Algodão (400g/m²)',
-                care: 'Lavar a 40°C. Secar ao ar livre. Passar a ferro quente.',
-                images: ['https://bing.com/th/id/BCO.b07674cb-e727-4d4a-adb3-75a44adeea91.png']
-            },
-            'fatos-safari': {
-                name: 'Fato Safari', category: 'Vestuário Masculino', price: '97.000,00 AOA',
-                description: 'Desenvolvido para oferecer o máximo conforto e durabilidade em actividades ao ar livre. Confeccionado com tecido resistente e respirável.',
-                dimensions: 'Tamanhos: S, M, L, XL, XXL',
-                colors: 'Bege, Verde-oliva, Caqui, Azul-marinho, Cinza',
-                materials: 'Tecido misto algodão-poliéster resistente',
-                care: 'Lavar a 30°C. Não usar alvejante. Passar a ferro em temperatura média.',
-                images: ['https://bing.com/th/id/BCO.098510b2-36fb-4852-8cee-3ebd7f40dd2c.png']
-            },
-            'fatos-sociais': {
-                name: 'Fato Social ', category: 'Vestuário Formal Masculino', price: '187.000,00 AOA',
-                description: 'Para ocasiões que exigem elegância. Com cortes modernos e tecidos de alta qualidade, garantimos um caimento impecável e um visual distinto.',
-                dimensions: 'Tamanhos: S, M, L, XL, XXL (Ajustes incluídos)',
-                colors: 'Preto, Azul-marinho, Cinza-escuro, Grafite, Listrados',
-                materials: 'Lã 100%, Misturas de lã e Poliéster premium',
-                care: 'Lavagem a seco recomendada. Passar a vapor.',
-                images: ['https://bing.com/th/id/BCO.0a34d0f1-2f67-4a73-ba7c-a92b9640590f.png']
-            },
-            'camisas-polo': {
-                name: 'Camisa Polo ', category: 'Vestuário Casual Elegante', price: '32.000,00 AOA',
-                description: 'A nossa camisa polo em algodão piquet de alta qualidade é a peça ideal para um visual casual mas elegante. Colarinho reforçado que mantém o formato.',
-                dimensions: 'Tamanhos: S, M, L, XL, XXL',
-                colors: 'Branco, Preto, Azul-marinho, Vermelho, Verde',
-                materials: '100% Algodão Piquet (180-200g/m²)',
-                care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra.',
-                images: ['https://bing.com/th/id/BCO.e90098df-f8a6-4942-b6b1-321d12b80c27.png', 'https://bing.com/th/id/BCO.39b9f50b-12e1-40bc-b3bb-6c04971a5031.png']
-            }
-        };
-
-        const modal = document.getElementById('productModal');
-        const modalClose = document.querySelector('.modal-close');
-        const modalMainImage = document.getElementById('modalMainImage');
-        const thumbnailContainer = document.getElementById('thumbnailContainer');
-        
-        const populateModal = (productId) => {
-            const data = productsData[productId];
-            if (!data) return;
-
-            document.getElementById('modalProductName').textContent = data.name;
-            document.getElementById('modalProductCategory').textContent = data.category;
-            document.getElementById('modalProductDescription').textContent = data.description;
-            document.getElementById('modalDimensions').textContent = data.dimensions;
-            document.getElementById('modalColors').textContent = data.colors;
-            document.getElementById('modalMaterials').textContent = data.materials;
-            document.getElementById('modalCare').textContent = data.care;
-            document.getElementById('modalPrice').textContent = data.price;
-            
-            modalMainImage.src = data.images[0];
-            modalMainImage.alt = data.name;
-            
-            thumbnailContainer.innerHTML = '';
-            data.images.forEach((imgSrc, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgSrc;
-                thumb.alt = `${data.name} thumbnail ${index + 1}`;
-                thumb.className = 'thumbnail protected-image';
-                if (index === 0) thumb.classList.add('active');
+            const toggleMenu = () => {
+                const isExpanded = navLinks.classList.contains('active');
                 
-                thumb.addEventListener('click', () => {
-                    modalMainImage.src = thumb.src;
-                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
+                // Toggle classes for CSS animations and scroll lock
+                burger.classList.toggle('toggle');
+                navLinks.classList.toggle('active');
+                body.classList.toggle('nav-open');
+                
+                // Update ARIA attribute for accessibility
+                burger.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            burger.addEventListener('click', toggleMenu);
+
+            // Close menu when clicking a link (for same-page navigation)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
                 });
-                thumbnailContainer.appendChild(thumb);
             });
-        };
+            
+            // --- OBSERVER FOR SECTION ANIMATIONS ON SCROLL ---
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
 
-        document.querySelectorAll('[data-product-id]').forEach(row => {
-            row.addEventListener('click', function() {
-                populateModal(this.dataset.productId);
-                modal.style.display = 'flex';
-                body.classList.add('nav-open'); // Reutiliza a classe para bloquear scroll
+            sections.forEach(section => {
+                sectionObserver.observe(section);
             });
-        });
 
-        const closeModal = () => {
-            modal.style.display = 'none';
-            body.classList.remove('nav-open');
-        };
+            // --- PRODUCT MODAL DATA AND LOGIC ---
+            const productsData = {
+                'bases-mesa': {
+                    name: 'Bases de Mesa', 
+                    category: 'Decoração & Utilitário', 
+                    price: 'Sob consulta',
+                    description: 'São cuidadosamente confeccionadas para adicionar um toque de elegância à sua decoração. Disponíveis em diversos materiais, oferecem durabilidade e fácil manutenção.',
+                    dimensions: 'Vários tamanhos: Pequena (40x60cm), Média (60x90cm), Grande (80x120cm)',
+                    colors: 'Branco, Bege, Cinza, Azul-marinho, Verde-oliva, Vermelho e padrões africanos',
+                    materials: 'Algodão 100%, Linho, Poliéster resistente',
+                    care: 'Lavável na máquina a 30°C. Não usar alvejante.',
+                    images: ['images/base.jpg', 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80']
+                },
+                'toalhas-banho': {
+                    name: 'Toalha de Banho Premium', 
+                    category: 'Tamanho Grande (70x140cm)', 
+                    price: '37.000,00 AOA',
+                    description: 'Toalha de banho em algodão egípcio 100% oferece uma experiência de luxo. Proporciona absorção excepcional enquanto mantém sua suavidade mesmo após múltiplas lavagens.',
+                    dimensions: '70cm x 140cm (tamanho grande)',
+                    colors: 'Branco, Azul-celeste, Cinza, Rosa, Verde-menta',
+                    materials: '100% Algodão Egípcio (600g/m²)',
+                    care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra.',
+                    images: ['https://img.freepik.com/free-photo/white-bath-towel-table_74190-7888.jpg?t=st=1752587786~exp=1752591386~hmac=86a6e7520755ef3915e34a20d1aca6aed25caa2eeb1908179673642505ed45b6&w=900']
+                },
+                'toalha-mao': {
+                    name: 'Toalha de Mão Elegante',
+                    category: 'Tamanho Pequeno (30x50cm)',
+                    price: '18.000,00 AOA',
+                    description: 'Toalha para mãos em algodão absorvente, perfeita para lavabos e casas de banho. Tamanho prático que combina funcionalidade e estilo com acabamento delicado.',
+                    dimensions: '30cm x 50cm (tamanho pequeno)',
+                    colors: 'Branco, Marfim, Bege-claro, Azul-bebé',
+                    materials: '100% Algodão (380g/m²)',
+                    care: 'Lavar a 40°C. Secar à sombra. Passar a ferro morno.',
+                    images: ['https://bing.com/th/id/BCO.3e8d087d-da22-4b8c-82e0-575ba66a71f2.png']
+                },
+                'toalhas-rosto': {
+                    name: 'Toalha de Rosto', 
+                    category: 'Tamanho Médio (50x90cm)', 
+                    price: '25.000,00 AOA',
+                    description: 'Toalha facial em algodão puro, perfeita para cuidados diários. Com absorção rápida e textura suave que não irrita a pele.',
+                    dimensions: '50cm x 90cm (tamanho médio)',
+                    colors: 'Branco, Azul-claro, Cinza-claro, Rosa-pálido',
+                    materials: '100% Algodão (400g/m²)',
+                    care: 'Lavar a 40°C. Secar ao ar livre. Passar a ferro quente.',
+                    images: ['https://bing.com/th/id/BCO.b07674cb-e727-4d4a-adb3-75a44adeea91.png']
+                },
+                'fatos-safari': {
+                    name: 'Fato Safari', 
+                    category: 'Vestuário Masculino', 
+                    price: '97.000,00 AOA',
+                    description: 'Desenvolvido para oferecer o máximo conforto e durabilidade em actividades ao ar livre. Confeccionado com tecido resistente e respirável.',
+                    dimensions: 'Tamanhos: S, M, L, XL, XXL',
+                    colors: 'Bege, Verde-oliva, Caqui, Azul-marinho, Cinza',
+                    materials: 'Tecido misto algodão-poliéster resistente',
+                    care: 'Lavar a 30°C. Não usar alvejante. Passar a ferro em temperatura média.',
+                    images: ['https://bing.com/th/id/BCO.098510b2-36fb-4852-8cee-3ebd7f40dd2c.png']
+                },
+                'fatos-sociais': {
+                    name: 'Fato Social', 
+                    category: 'Vestuário Formal Masculino', 
+                    price: '187.000,00 AOA',
+                    description: 'Para ocasiões que exigem elegância. Com cortes modernos e tecidos de alta qualidade, garantimos um caimento impecável e um visual distinto.',
+                    dimensions: 'Tamanhos: S, M, L, XL, XXL (Ajustes incluídos)',
+                    colors: 'Preto, Azul-marinho, Cinza-escuro, Grafite, Listrados',
+                    materials: 'Lã 100%, Misturas de lã e Poliéster premium',
+                    care: 'Lavagem a seco recomendada. Passar a vapor.',
+                    images: ['https://bing.com/th/id/BCO.0a34d0f1-2f67-4a73-ba7c-a92b9640590f.png']
+                },
+                'camisas-polo': {
+                    name: 'Camisa Polo', 
+                    category: 'Vestuário Casual Elegante', 
+                    price: '32.000,00 AOA',
+                    description: 'A nossa camisa polo em algodão piquet de alta qualidade é a peça ideal para um visual casual mas elegante. Colarinho reforçado que mantém o formato.',
+                    dimensions: 'Tamanhos: S, M, L, XL, XXL',
+                    colors: 'Branco, Preto, Azul-marinho, Vermelho, Verde',
+                    materials: '100% Algodão Piquet (180-200g/m²)',
+                    care: 'Lavar a 40°C. Não usar alvejante. Secar à sombra.',
+                    images: ['https://bing.com/th/id/BCO.e90098df-f8a6-4942-b6b1-321d12b80c27.png', 'https://bing.com/th/id/BCO.39b9f50b-12e1-40bc-b3bb-6c04971a5031.png']
+                }
+            };
 
-        modalClose.addEventListener('click', closeModal);
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
+            const modal = document.getElementById('productModal');
+            const modalClose = document.querySelector('.modal-close');
+            const modalMainImage = document.getElementById('modalMainImage');
+            const thumbnailContainer = document.getElementById('thumbnailContainer');
+            
+            const populateModal = (productId) => {
+                const data = productsData[productId];
+                if (!data) return; // Exit if product data is not found
 
-        // --- LÓGICA DE PROTEÇÃO DE IMAGEM ---
-        const showCopyMessage = () => {
-            body.classList.add('copied');
-            setTimeout(() => {
-                body.classList.remove('copied');
-            }, 3000);
-        };
-        
-        document.addEventListener('contextmenu', (e) => {
-            if (e.target.classList.contains('protected-image')) {
-                e.preventDefault();
-                showCopyMessage();
-            }
+                document.getElementById('modalProductName').textContent = data.name;
+                document.getElementById('modalProductCategory').textContent = data.category;
+                document.getElementById('modalProductDescription').textContent = data.description;
+                document.getElementById('modalDimensions').textContent = data.dimensions;
+                document.getElementById('modalColors').textContent = data.colors;
+                document.getElementById('modalMaterials').textContent = data.materials;
+                document.getElementById('modalCare').textContent = data.care;
+                document.getElementById('modalPrice').textContent = data.price;
+                
+                // Set initial main image
+                modalMainImage.src = data.images[0];
+                modalMainImage.alt = data.name;
+                
+                // Clear existing thumbnails
+                thumbnailContainer.innerHTML = '';
+                // Populate thumbnails
+                data.images.forEach((imgSrc, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgSrc;
+                    thumb.alt = `${data.name} thumbnail ${index + 1}`;
+                    thumb.className = 'thumbnail protected-image';
+                    if (index === 0) thumb.classList.add('active'); // Mark first thumbnail as active
+                    
+                    thumb.addEventListener('click', () => {
+                        modalMainImage.src = thumb.src; // Change main image on thumbnail click
+                        // Remove active class from all thumbnails and add to the clicked one
+                        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                    thumbnailContainer.appendChild(thumb);
+                });
+            };
+
+            // Event listeners for opening modal from table rows
+            document.querySelectorAll('[data-product-id]').forEach(row => {
+                row.addEventListener('click', function() {
+                    populateModal(this.dataset.productId);
+                    modal.style.display = 'flex'; // Show modal
+                    body.classList.add('modal-open'); // Add class to body to prevent scroll
+                });
+            });
+
+            // Function to close modal
+            const closeModal = () => {
+                modal.style.display = 'none'; // Hide modal
+                body.classList.remove('modal-open'); // Remove class from body to re-enable scroll
+            };
+
+            // Event listeners for closing modal
+            modalClose.addEventListener('click', closeModal); // Close button
+            window.addEventListener('click', (event) => { // Click outside modal content
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // --- IMAGE PROTECTION LOGIC ---
+            const showCopyMessage = () => {
+                body.classList.add('copied');
+                setTimeout(() => {
+                    body.classList.remove('copied');
+                }, 3000); // Message disappears after 3 seconds
+            };
+            
+            // Prevent right-click context menu on protected images
+            document.addEventListener('contextmenu', (e) => {
+                if (e.target.classList.contains('protected-image')) {
+                    e.preventDefault();
+                    showCopyMessage();
+                }
+            });
+            
+            // Prevent dragging of protected images
+            document.querySelectorAll('.protected-image').forEach(img => {
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+            });
+            
         });
-        
-        document.querySelectorAll('.protected-image').forEach(img => {
-            img.addEventListener('dragstart', (e) => e.preventDefault());
-        });
-        
-    });
     </script>
 </body>
 </html>

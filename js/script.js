@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'uniforme-selecao',
             name: 'Equipamento de Treino - Seleção',
             category: 'uniformes',
-            description: 'Equipamentos de treino com design exclusivo, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e Modelos.',
+            description: 'Equipamentos de treino com design exclusivo, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e modelos.',
+            price: 'A partir de 15.000 Kz',
             images: ['images/fato_treino04.png', 'images/fato_treino03.png', 'images/fato_treino05.png']
         },
         {
@@ -13,27 +14,55 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Toalha Personalizada FAF',
             category: 'toalhas',
             description: 'Toalhas de alta absorção e durabilidade, personalizadas com o escudo da FAF e outros elementos gráficos. Ideal para uso em treinos, vestiários e eventos. Disponível em diferentes cores e tamanhos.',
+            price: 'A partir de 5.000 Kz',
             images: ['images/toalha/toalha1.png', 'images/toalha/toalha02.png', 'images/toalha/toalha03.png']
         },
         {
             id: 'vestuario-cerimonial',
-            name: 'Camisolas - Angola',
+            name: 'Camisolas Cerimoniais - Angola',
             category: 'camisolas',
             description: 'Camisolas elegantes para eventos cerimoniais ou uso casual, incorporando elementos da marca Angola. Confortáveis, com corte moderno e acabamento impecável. Perfeitas para representar o espírito angolano com estilo.',
+            price: 'A partir de 12.000 Kz',
             images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
         },
         {
+            id: 'caneca-personalizada',
+            name: 'Chávenas Personalizada',
+            category: 'escritorio',
+            description: 'Chávenas de  de alta qualidade, personalizadas com o logotipo da FAF, emblemas da Seleção Angolana ou designs exclusivos. Perfeitas para uso no escritório ou como brinde promocional.',
+            price: 'A partir de 45.500 Kz',
+            images: ['images/caneca/caneca1.png', 'images/caneca/caneca2.png', 'images/caneca/caneca3.png']
+        },
+        {
+            id: 'pins-crachas',
+            name: 'Pins e Crachás Personalizados',
+            category: 'escritorio',
+            description: 'Pins e crachás metálicos ou de resina, personalizados com o escudo da FAF, bandeira de Angola ou logotipos de eventos. Ideal para identificação de staff, brindes ou colecionáveis.',
+            price: 'A partir de 6.000 Kz',
+            images: ['images/pins/pin1.png', 'images/pins/pin2.png', 'images/pins/pin3.png']
+        },
+        {
+            id: 'canetas-personalizadas',
+            name: 'Canetas Personalizadas',
+            category: 'escritorio',
+            description: 'Canetas de alta qualidade, personalizadas com gravação a laser ou impressão do logotipo da FAF. Perfeitas para uso corporativo, eventos ou como brindes de luxo.',
+            price: 'A partir de 4.000 Kz',
+            images: ['images/canetas/caneta1.png', 'images/canetas/caneta2.png', 'images/canetas/caneta3.png']
+        },
+        {
             id: 'fato-social',
-            name: 'Fato Social ',
+            name: 'Fato Social',
             category: 'promocionais',
             description: 'Fato Social de alta qualidade, ideais para eventos e jogos oficiais. Bordado com a bandeira de Angola ou logotipos da FAF. Um item perfeito para engajar fãs e promover a marca.',
+            price: 'A partir de 100.000 Kz',
             images: ['images/fato/Fato.png', 'images/fato/fato01.png', 'images/fato/fato02.png', 'images/fato/fato03.png']
         },
         {
             id: 'itens-promocional',
-            name: 'Itens Promocional',
+            name: 'Itens Promocionais Diversos',
             category: 'promocionais',
             description: 'Itens promocionais e vestuário diverso de alta qualidade, ideais para eventos e jogos oficiais. Inclui vídeos e imagens que promovem a marca e engajam os fãs.',
+            price: 'Consultar preços',
             images: [
                 'images/promo/promo_video01.mp4',
                 'images/promo/promo_video.mp4',
@@ -56,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProductName = document.getElementById('modalProductName');
     const carouselImagesContainer = document.getElementById('carouselImages');
     const modalProductDescription = document.getElementById('modalProductDescription');
+    const modalProductPrice = document.getElementById('modalProductPrice');
     const closeButton = document.querySelector('.close-button');
     const prevButton = productModal.querySelector('.carousel-nav.prev');
     const nextButton = productModal.querySelector('.carousel-nav.next');
@@ -109,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productCard.innerHTML = `
                 ${mediaHtml}
                 <h3>${product.name}</h3>
+                <p class="product-price">${product.price}</p>
             `;
             productListings.appendChild(productCard);
 
@@ -119,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Abre a modal de detalhes do produto.
-     * Carrega o nome, descrição e todas as mídias do produto no carrossel da modal.
+     * Carrega o nome, descrição, preço e todas as mídias do produto no carrossel da modal.
      * @param {string} productId - O ID do produto a ser exibido.
      */
     function openProductModal(productId) {
@@ -128,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (product) {
             modalProductName.textContent = product.name;
             modalProductDescription.textContent = product.description;
+            modalProductPrice.textContent = `Preço: ${product.price}`;
             currentMediaArray = product.images; // Atualiza a array de mídias para o carrossel
 
             loadCarouselMedia(currentMediaArray); // Carrega as mídias no carrossel da modal
@@ -172,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaElement.classList.toggle('zoomed');
                     if (mediaElement.classList.contains('zoomed')) {
                         modalProductDescription.style.overflowY = 'hidden'; // Impede scroll da descrição
+                        modalProductPrice.style.display = 'none'; // Esconde o preço
                         prevButton.style.display = 'none'; // Esconde botões de navegação
                         nextButton.style.display = 'none';
                         const rect = mediaElement.getBoundingClientRect();
@@ -180,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaElement.style.transformOrigin = `${x * 100}% ${y * 100}%`;
                     } else {
                         modalProductDescription.style.overflowY = 'auto'; // Habilita scroll
+                        modalProductPrice.style.display = 'block'; // Mostra o preço
                         mediaElement.style.transformOrigin = 'center center';
                         updateCarouselButtonsVisibility(); // Reexibe botões de navegação
                     }
@@ -199,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaElement.classList.remove('zoomed');
                         mediaElement.style.transformOrigin = 'center center';
                         modalProductDescription.style.overflowY = 'auto';
+                        modalProductPrice.style.display = 'block'; // Mostra o preço
                         updateCarouselButtonsVisibility();
                     }
                 });
@@ -370,17 +405,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lógica do Menu Hambúrguer (Responsividade)
     navBurger.addEventListener('click', () => {
         navLinks.classList.toggle('nav-active'); // Ativa/desativa a navegação
+        navBurger.classList.toggle('toggle'); // Anima o ícone do hambúrguer
 
+        // Animação dos links
         navIndividualLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = ''; // Reseta a animação
-            } else {
-                // Adiciona animação com delay escalonado
+            if (navLinks.classList.contains('nav-active')) {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            } else {
+                link.style.animation = ''; // Reseta a animação ao fechar
             }
         });
-
-        navBurger.classList.toggle('toggle'); // Anima o ícone do hambúrguer
     });
 
     // Fechar menu hambúrguer ao clicar em um link
@@ -393,9 +427,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-  
-    
 
     const sections = document.querySelectorAll('section');
 
