@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Equipamento de Treino - Seleção',
             category: 'uniformes',
             description: 'Equipamentos de treino com design exclusivo, confeccionados com tecido premium respirável e acabamento de alta costura. Bordado com o escudo da FAF e elementos que refletem o orgulho nacional angolano. Disponível em diversos tamanhos e modelos.',
-            price: 'A partir de 15.000 Kz',
+            price: 'A partir de 187.000 Kz',
             images: ['images/fato_treino04.png', 'images/fato_treino03.png', 'images/fato_treino05.png']
         },
         {
@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Toalha Personalizada FAF',
             category: 'toalhas',
             description: 'Toalhas de alta absorção e durabilidade, personalizadas com o escudo da FAF e outros elementos gráficos. Ideal para uso em treinos, vestiários e eventos. Disponível em diferentes cores e tamanhos.',
-            price: 'A partir de 5.000 Kz',
+            price: 'A partir de 44.000 Kz',
             images: ['images/toalha/toalha1.png', 'images/toalha/toalha02.png', 'images/toalha/toalha03.png']
         },
         {
             id: 'vestuario-cerimonial',
-            name: 'Camisolas Cerimoniais - Angola',
+            name: 'Camisolas  - Angola',
             category: 'camisolas',
             description: 'Camisolas elegantes para eventos cerimoniais ou uso casual, incorporando elementos da marca Angola. Confortáveis, com corte moderno e acabamento impecável. Perfeitas para representar o espírito angolano com estilo.',
-            price: 'A partir de 12.000 Kz',
+            price: 'A partir de 48.000 Kz',
             images: ['images/camisola/camisa01.png', 'images/camisola/camisola02.png', 'images/camisola/camisola03.png', 'images/camisola/camisa04.png']
         },
         {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Canetas Personalizadas',
             category: 'escritorio',
             description: 'Canetas de alta qualidade, personalizadas com gravação a laser ou impressão do logotipo da FAF. Perfeitas para uso corporativo, eventos ou como brindes de luxo.',
-            price: 'A partir de 4.000 Kz',
+            price: 'A partir de 5.000 Kz',
             images: ['images/canetas/caneta1.png', 'images/canetas/caneta2.png', 'images/canetas/caneta3.png']
         },
         {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Fato Social',
             category: 'promocionais',
             description: 'Fato Social de alta qualidade, ideais para eventos e jogos oficiais. Bordado com a bandeira de Angola ou logotipos da FAF. Um item perfeito para engajar fãs e promover a marca.',
-            price: 'A partir de 100.000 Kz',
+            price: 'A partir de 187.000 Kz',
             images: ['images/fato/Fato.png', 'images/fato/fato01.png', 'images/fato/fato02.png', 'images/fato/fato03.png']
         },
         {
