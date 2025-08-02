@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Dados dos Produtos
     const products = [
+        // ... (seus produtos existentes)
         {
             id: 'uniforme-selecao',
             name: 'Equipamento de Treino - Seleção',
@@ -76,6 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 'images/promo/promo08.jpg',
                 'images/promo/promo09.jpg'
             ]
+        },
+        // Novo item adicionado
+        {
+            id: 'agendas-personalizadas',
+            name: 'Agendas Personalizadas',
+            category: 'escritorio',
+            description: 'Agendas com capa e miolo personalizáveis para empresas, eventos ou uso pessoal. Disponíveis em diferentes tamanhos e materiais de alta qualidade, ideais para brindes corporativos.',
+            price: 'A partir de 15.000 Kz',
+            images: ['images/agendas/agenda01.png', 'images/agendas/agenda02.png', 'images/agendas/agenda03.png']
         }
     ];
 
@@ -97,19 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const navIndividualLinks = document.querySelectorAll('.nav-links li');
 
-    let currentProductIndex = 0; // Controla o slide atual do carrossel na modal
-    let currentMediaArray = []; // Armazena as mídias (imagens/vídeos) do produto atual
+    let currentProductIndex = 0;
+    let currentMediaArray = [];
 
     // --- Funções Principais ---
 
-    /**
-     * Exibe os produtos na lista principal.
-     * Cria cards de produto com base nos dados, exibindo a primeira mídia.
-     * Para vídeos, mostra uma thumbnail e um ícone de play.
-     * @param {Array} filteredProducts - Lista de produtos a serem exibidos.
-     */
     function displayProducts(filteredProducts) {
-        productListings.innerHTML = ''; // Limpa os produtos existentes
+        productListings.innerHTML = '';
 
         if (filteredProducts.length === 0) {
             productListings.innerHTML = '<p class="no-products-message">Nenhum produto encontrado nesta categoria.</p>';
@@ -119,20 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredProducts.forEach(product => {
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
-            productCard.dataset.id = product.id; // Define o ID do produto para identificação ao clicar
+            productCard.dataset.id = product.id;
 
             const firstMedia = product.images[0];
             let mediaHtml = '';
 
             if (firstMedia.endsWith('.mp4')) {
-                // Se for um vídeo, cria uma thumbnail com um ícone de play
                 mediaHtml = `
                     <div class="video-thumbnail-placeholder">
                         <video src="${firstMedia}#t=1" preload="metadata" muted></video>
                         <i class="fas fa-play-circle video-play-icon"></i>
                     </div>`;
             } else {
-                // Se for uma imagem
                 mediaHtml = `<img src="${firstMedia}" alt="${product.name}">`;
             }
 
@@ -143,16 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             productListings.appendChild(productCard);
 
-            // Adiciona o evento de clique para abrir a modal com os detalhes do produto
             productCard.addEventListener('click', () => openProductModal(product.id));
         });
     }
 
-    /**
-     * Abre a modal de detalhes do produto.
-     * Carrega o nome, descrição, preço e todas as mídias do produto no carrossel da modal.
-     * @param {string} productId - O ID do produto a ser exibido.
-     */
     function openProductModal(productId) {
         const product = products.find(p => p.id === productId);
 
@@ -160,62 +156,53 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProductName.textContent = product.name;
             modalProductDescription.textContent = product.description;
             modalProductPrice.textContent = `Preço: ${product.price}`;
-            currentMediaArray = product.images; // Atualiza a array de mídias para o carrossel
+            currentMediaArray = product.images;
 
-            loadCarouselMedia(currentMediaArray); // Carrega as mídias no carrossel da modal
-            productModal.style.display = 'flex'; // Exibe a modal
-            document.body.style.overflow = 'hidden'; // Impede o scroll do corpo da página
+            loadCarouselMedia(currentMediaArray);
+            productModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
     }
 
-    /**
-     * Carrega as mídias (imagens e vídeos) no carrossel dentro da modal.
-     * Cria elementos <img/> ou <video/> e adiciona lógica de zoom para imagens.
-     * @param {Array} mediaArray - Array de URLs das mídias.
-     */
     function loadCarouselMedia(mediaArray) {
-        carouselImagesContainer.innerHTML = ''; // Limpa o carrossel existente
-
-        mediaArray.forEach(src => {
+        carouselImagesContainer.innerHTML = '';
+        currentMediaArray.forEach(src => {
             let mediaElement;
             if (src.endsWith('.mp4')) {
-                // Cria um elemento de vídeo com controles nativos
                 mediaElement = document.createElement('video');
                 mediaElement.src = src;
-                mediaElement.controls = true; // Mostra os controles de vídeo (play, pause, volume, etc.)
-                mediaElement.muted = true; // Inicia mutado para melhor experiência do usuário (autoplay policies)
-                mediaElement.loop = true; // Repete o vídeo
-                mediaElement.autoplay = false; // Não inicia automaticamente ao carregar a modal
-                mediaElement.preload = 'auto'; // Pré-carrega o vídeo
-                mediaElement.classList.add('modal-media', 'modal-video'); // Classes para estilização
+                mediaElement.controls = true;
+                mediaElement.muted = true;
+                mediaElement.loop = true;
+                mediaElement.autoplay = false;
+                mediaElement.preload = 'auto';
+                mediaElement.classList.add('modal-media', 'modal-video');
             } else {
-                // Cria um elemento de imagem
                 mediaElement = document.createElement('img');
                 mediaElement.src = src;
-                mediaElement.alt = modalProductName.textContent; // Texto alternativo para acessibilidade
-                mediaElement.classList.add('modal-media', 'modal-image'); // Classes para estilização
+                mediaElement.alt = modalProductName.textContent;
+                mediaElement.classList.add('modal-media', 'modal-image');
             }
 
             carouselImagesContainer.appendChild(mediaElement);
 
-            // Adiciona a lógica de zoom para imagens (apenas se for uma imagem)
             if (mediaElement.tagName === 'IMG') {
                 mediaElement.addEventListener('click', (e) => {
                     mediaElement.classList.toggle('zoomed');
                     if (mediaElement.classList.contains('zoomed')) {
-                        modalProductDescription.style.overflowY = 'hidden'; // Impede scroll da descrição
-                        modalProductPrice.style.display = 'none'; // Esconde o preço
-                        prevButton.style.display = 'none'; // Esconde botões de navegação
+                        modalProductDescription.style.overflowY = 'hidden';
+                        modalProductPrice.style.display = 'none';
+                        prevButton.style.display = 'none';
                         nextButton.style.display = 'none';
                         const rect = mediaElement.getBoundingClientRect();
                         const x = (e.clientX - rect.left) / rect.width;
                         const y = (e.clientY - rect.top) / rect.height;
                         mediaElement.style.transformOrigin = `${x * 100}% ${y * 100}%`;
                     } else {
-                        modalProductDescription.style.overflowY = 'auto'; // Habilita scroll
-                        modalProductPrice.style.display = 'block'; // Mostra o preço
+                        modalProductDescription.style.overflowY = 'auto';
+                        modalProductPrice.style.display = 'block';
                         mediaElement.style.transformOrigin = 'center center';
-                        updateCarouselButtonsVisibility(); // Reexibe botões de navegação
+                        updateCarouselButtonsVisibility();
                     }
                 });
 
@@ -233,20 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         mediaElement.classList.remove('zoomed');
                         mediaElement.style.transformOrigin = 'center center';
                         modalProductDescription.style.overflowY = 'auto';
-                        modalProductPrice.style.display = 'block'; // Mostra o preço
+                        modalProductPrice.style.display = 'block';
                         updateCarouselButtonsVisibility();
                     }
                 });
             }
         });
-        currentProductIndex = 0; // Reseta o índice do carrossel para o primeiro item
-        updateCarousel(); // Atualiza a exibição do carrossel
+        currentProductIndex = 0;
+        updateCarousel();
     }
 
-    /**
-     * Atualiza a visibilidade dos botões de navegação do carrossel (anterior/próximo).
-     * Esconde os botões se a mídia estiver com zoom ou se for o primeiro/último item.
-     */
     function updateCarouselButtonsVisibility() {
         if (carouselImagesContainer.children.length === 0) {
             prevButton.style.display = 'none';
@@ -256,16 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentMedia = carouselImagesContainer.children[currentProductIndex];
 
-        // Esconde botões se a imagem estiver com zoom
         if (currentMedia && currentMedia.classList.contains('zoomed')) {
             prevButton.style.display = 'none';
             nextButton.style.display = 'none';
         } else {
-            // Exibe ou esconde os botões com base na posição do carrossel
             prevButton.style.display = currentProductIndex === 0 ? 'none' : 'flex';
             nextButton.style.display = currentProductIndex === currentMediaArray.length - 1 ? 'none' : 'flex';
 
-            // Se houver apenas 1 mídia, esconde ambos os botões de qualquer forma
             if (currentMediaArray.length <= 1) {
                 prevButton.style.display = 'none';
                 nextButton.style.display = 'none';
@@ -273,26 +253,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Atualiza a posição do carrossel e controla a reprodução de vídeos.
-     * Pausa outros vídeos ao navegar para um novo slide.
-     */
     function updateCarousel() {
-        if (carouselImagesContainer.children.length === 0) return; // Evita erro se não houver mídias
+        if (carouselImagesContainer.children.length === 0) return;
 
-        // Pausa todos os vídeos que não são o slide atual
         Array.from(carouselImagesContainer.children).forEach((media, index) => {
             if (media.tagName === 'VIDEO') {
                 if (index !== currentProductIndex) {
                     media.pause();
-                    media.currentTime = 0; // Volta para o início
+                    media.currentTime = 0;
                 } else {
-                    // Para o vídeo atual, pode desmutar e tentar tocar (se a política de autoplay permitir)
-                    media.muted = false; // Desmuta o vídeo visível
+                    media.muted = false;
                     media.play().catch(error => {
-                        // Captura erros de autoplay se o navegador impedir
                         console.warn("Autoplay impedido. O usuário precisará interagir para dar play.", error);
-                        // Você pode adicionar uma UI aqui para indicar ao usuário para clicar no play
                     });
                 }
             }
@@ -301,20 +273,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const mediaWidth = carouselImagesContainer.children[0].clientWidth;
         carouselImagesContainer.style.transform = `translateX(-${currentProductIndex * mediaWidth}px)`;
 
-        updateCarouselButtonsVisibility(); // Atualiza a visibilidade dos botões após a navegação
+        updateCarouselButtonsVisibility();
     }
 
     // --- Event Listeners ---
 
-    // Inicialmente exibe todos os produtos e ativa a categoria "Todos"
     displayProducts(products);
     document.querySelector('.categoria-item[data-categoria="all"]').classList.add('active');
 
-    // Listener para o filtro de categorias
     categoryItems.forEach(item => {
         item.addEventListener('click', () => {
-            categoryItems.forEach(cat => cat.classList.remove('active')); // Remove 'active' de todos
-            item.classList.add('active'); // Adiciona 'active' ao clicado
+            categoryItems.forEach(cat => cat.classList.remove('active'));
+            item.classList.add('active');
 
             const category = item.dataset.categoria;
             if (category === 'all') {
@@ -326,16 +296,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Listener para o botão "Explore Nossos Produtos"
     callToActionBtn.addEventListener('click', () => {
         document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Navegação do Carrossel (botão anterior)
     prevButton.addEventListener('click', () => {
         const currentMedia = carouselImagesContainer.children[currentProductIndex];
         if (currentMedia && currentMedia.classList.contains('zoomed')) {
-            return; // Impede navegação se a imagem estiver com zoom
+            return;
         }
         if (currentProductIndex > 0) {
             currentProductIndex--;
@@ -343,11 +311,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Navegação do Carrossel (botão próximo)
     nextButton.addEventListener('click', () => {
         const currentMedia = carouselImagesContainer.children[currentProductIndex];
         if (currentMedia && currentMedia.classList.contains('zoomed')) {
-            return; // Impede navegação se a imagem estiver com zoom
+            return;
         }
         if (currentProductIndex < currentMediaArray.length - 1) {
             currentProductIndex++;
@@ -355,19 +322,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Ajusta o carrossel ao redimensionar a janela (se a modal estiver aberta)
     window.addEventListener('resize', () => {
         if (productModal.style.display === 'flex') {
             updateCarousel();
         }
     });
 
-    // Fechamento da Modal pelo botão "X"
     closeButton.addEventListener('click', () => {
         productModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Reabilita o scroll do corpo
+        document.body.style.overflow = 'auto';
 
-        // Pausa e reseta vídeos e remove zoom de imagens ao fechar a modal
         Array.from(carouselImagesContainer.children).forEach(media => {
             if (media.tagName === 'VIDEO') {
                 media.pause();
@@ -381,13 +345,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fechar modal clicando fora dela
     window.addEventListener('click', (event) => {
         if (event.target === productModal) {
             productModal.style.display = 'none';
             document.body.style.overflow = 'auto';
 
-            // Pausa e reseta vídeos e remove zoom de imagens ao fechar a modal
             Array.from(carouselImagesContainer.children).forEach(media => {
                 if (media.tagName === 'VIDEO') {
                     media.pause();
@@ -402,28 +364,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Lógica do Menu Hambúrguer (Responsividade)
     navBurger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active'); // Ativa/desativa a navegação
-        navBurger.classList.toggle('toggle'); // Anima o ícone do hambúrguer
+        navLinks.classList.toggle('nav-active');
+        navBurger.classList.toggle('toggle');
 
-        // Animação dos links
         navIndividualLinks.forEach((link, index) => {
             if (navLinks.classList.contains('nav-active')) {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             } else {
-                link.style.animation = ''; // Reseta a animação ao fechar
+                link.style.animation = '';
             }
         });
     });
 
-    // Fechar menu hambúrguer ao clicar em um link
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (navLinks.classList.contains('nav-active')) {
                 navLinks.classList.remove('nav-active');
                 navBurger.classList.remove('toggle');
-                navIndividualLinks.forEach(item => item.style.animation = ''); // Reseta animação ao fechar
+                navIndividualLinks.forEach(item => item.style.animation = '');
             }
         });
     });
@@ -431,21 +390,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
-        root: null, // O viewport é o elemento raiz
-        rootMargin: '0px', // Nenhuma margem extra
-        threshold: 0.1 // A callback é executada quando 10% do elemento está visível
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
     };
 
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible'); // Adiciona classe para iniciar a animação
-                observer.unobserve(entry.target); // Para de observar após a animação (para animar apenas uma vez)
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     sections.forEach(section => {
-        sectionObserver.observe(section); // Começa a observar cada seção
+        sectionObserver.observe(section);
     });
 });
